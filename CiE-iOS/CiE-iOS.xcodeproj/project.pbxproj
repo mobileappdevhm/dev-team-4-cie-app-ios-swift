@@ -22,6 +22,9 @@
 		61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB520A748990067DB14 /* TimeTableViewModel.swift */; };
 		61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB720A748F10067DB14 /* FavoritesViewModel.swift */; };
 		61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB920A749410067DB14 /* SettingsViewModel.swift */; };
+		618C38EA20AEF2B900B5C6FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C38E920AEF2B900B5C6FB /* User.swift */; };
+		618C38EC20AEF48000B5C6FB /* UserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C38EB20AEF48000B5C6FB /* UserTest.swift */; };
+		618C38EF20AEF68000B5C6FB /* UserMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C38EE20AEF68000B5C6FB /* UserMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		61574BB520A748990067DB14 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		61574BB720A748F10067DB14 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		61574BB920A749410067DB14 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		618C38E920AEF2B900B5C6FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		618C38EB20AEF48000B5C6FB /* UserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTest.swift; sourceTree = "<group>"; };
+		618C38EE20AEF68000B5C6FB /* UserMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 		61574AFC20A739000067DB14 /* CiE-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				618C38E820AEF29500B5C6FB /* ObjectModels */,
 				61574BB020A747350067DB14 /* ViewModels */,
 				61574B2B20A73F820067DB14 /* ViewControllers */,
 				61574AFD20A739000067DB14 /* AppDelegate.swift */,
@@ -126,8 +133,10 @@
 		61574B1120A739010067DB14 /* CiE-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				618C38ED20AEF66800B5C6FB /* ObjectModelMocks */,
 				61574B1220A739010067DB14 /* CiE_iOSTests.swift */,
 				61574B1420A739010067DB14 /* Info.plist */,
+				618C38EB20AEF48000B5C6FB /* UserTest.swift */,
 			);
 			path = "CiE-iOSTests";
 			sourceTree = "<group>";
@@ -163,6 +172,22 @@
 				61574BB920A749410067DB14 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		618C38E820AEF29500B5C6FB /* ObjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				618C38E920AEF2B900B5C6FB /* User.swift */,
+			);
+			path = ObjectModels;
+			sourceTree = "<group>";
+		};
+		618C38ED20AEF66800B5C6FB /* ObjectModelMocks */ = {
+			isa = PBXGroup;
+			children = (
+				618C38EE20AEF68000B5C6FB /* UserMock.swift */,
+			);
+			path = ObjectModelMocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +328,7 @@
 				61574B2F20A740630067DB14 /* MapViewController.swift in Sources */,
 				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
+				618C38EA20AEF2B900B5C6FB /* User.swift in Sources */,
 				61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */,
 				61574BB420A748620067DB14 /* MapViewModel.swift in Sources */,
 				61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */,
@@ -313,6 +339,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				618C38EF20AEF68000B5C6FB /* UserMock.swift in Sources */,
+				618C38EC20AEF48000B5C6FB /* UserTest.swift in Sources */,
 				61574B1320A739010067DB14 /* CiE_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
