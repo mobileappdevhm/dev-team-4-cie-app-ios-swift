@@ -11,5 +11,5 @@ protocol CoursesViewModelProtocol {
 }
 
 class CoursesViewModel: CoursesViewModelProtocol {
-    
+    var courseNumber:Int?
 }
