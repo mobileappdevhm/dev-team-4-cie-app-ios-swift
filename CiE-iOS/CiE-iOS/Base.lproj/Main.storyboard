@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="jfB-cl-0x4">
             <objects>
                 <viewController id="UKN-jc-f5h" customClass="SettingsViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,13 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6hn-0f-PMM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="more" id="drO-YU-qnK"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="drO-YU-qnK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHH-zN-4M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="825" y="157"/>
         </scene>
-        <!--Courses View Controller-->
+        <!--Courses-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CoursesViewController" sceneMemberID="viewController">
@@ -36,13 +36,13 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="S2O-b5-Hxw"/>
+                    <tabBarItem key="tabBarItem" title="Courses" image="courses" selectedImage="courses" id="S2O-b5-Hxw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-652" y="157"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Map-->
         <scene sceneID="84e-3x-Jgt">
             <objects>
                 <viewController id="AOZ-lx-7lT" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,13 +52,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ntc-1H-0ga"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="history" id="K16-JC-f1X"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="K16-JC-f1X"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3M-By-7rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-652" y="920"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Timetable-->
         <scene sceneID="T6Y-9W-eMa">
             <objects>
                 <viewController id="5yk-PN-WVX" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,13 +68,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6hP-qj-GrE"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="H7c-y3-rsv"/>
+                    <tabBarItem key="tabBarItem" title="Timetable" image="timetable" id="H7c-y3-rsv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNQ-Io-CZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="105" y="920"/>
         </scene>
-        <!--Favorites View Controller-->
+        <!--Favourite-->
         <scene sceneID="m6S-6q-X5g">
             <objects>
                 <viewController id="JPt-0N-Ilw" customClass="FavoritesViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ezP-0l-e1R"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="1p5-Oy-3Qz"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" image="favourite" id="1p5-Oy-3Qz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0V-3y-UBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,6 +96,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="F6s-Mq-vKC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YwX-tw-YON">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -112,4 +113,11 @@
             <point key="canvasLocation" x="105" y="157"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="courses" width="24" height="24"/>
+        <image name="favourite" width="24" height="24"/>
+        <image name="map" width="24" height="24"/>
+        <image name="settings" width="24" height="24"/>
+        <image name="timetable" width="24" height="24"/>
+    </resources>
 </document>
