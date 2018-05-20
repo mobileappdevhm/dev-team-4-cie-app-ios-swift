@@ -148,35 +148,56 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Zba-kd-Z7f" userLabel="Login Stack View">
-                                <rect key="frame" x="20" y="360" width="335" height="106"/>
+                                <rect key="frame" x="25" y="360" width="325" height="141"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GC5-bD-g4Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l7I-nV-Qxq">
-                                        <rect key="frame" x="0.0" y="35" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="35" width="325" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0uv-e2-sXb">
-                                        <rect key="frame" x="0.0" y="70" width="335" height="36"/>
-                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Log In">
-                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="LoginButtonPressed:" destination="gdd-bM-zzl" eventType="touchUpInside" id="P1m-sm-KkU"/>
-                                        </connections>
+                                    <stackView opaque="NO" contentMode="scaleAspectFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uwm-YE-C6p">
+                                        <rect key="frame" x="0.0" y="70" width="325" height="36"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QO5-ND-OQX">
+                                                <rect key="frame" x="0.0" y="0.0" width="108.33333333333333" height="36"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2l-5U-1Qm">
+                                                <rect key="frame" x="108.33333333333334" y="0.0" width="108.33333333333334" height="36"/>
+                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <state key="normal" title="Log In">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="LoginButtonPressed:" destination="gdd-bM-zzl" eventType="touchUpInside" id="yDb-BE-Gcr"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4i-Ph-3Ap">
+                                                <rect key="frame" x="216.66666666666666" y="0.0" width="108.33333333333334" height="36"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzz-yE-01W">
+                                        <rect key="frame" x="0.0" y="111" width="325" height="30"/>
+                                        <state key="normal" title="Forgot password "/>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -187,8 +208,8 @@
                             <constraint firstItem="TlP-LH-H1j" firstAttribute="leading" secondItem="ON4-o8-77b" secondAttribute="leading" id="5uV-7e-o72"/>
                             <constraint firstItem="TlP-LH-H1j" firstAttribute="trailing" secondItem="ON4-o8-77b" secondAttribute="trailing" id="BVd-8r-60f"/>
                             <constraint firstItem="Zba-kd-Z7f" firstAttribute="top" secondItem="TlP-LH-H1j" secondAttribute="bottom" id="Ie2-E9-Fg9"/>
-                            <constraint firstItem="ON4-o8-77b" firstAttribute="trailing" secondItem="Zba-kd-Z7f" secondAttribute="trailing" constant="20" id="Sjp-sz-wuv"/>
-                            <constraint firstItem="Zba-kd-Z7f" firstAttribute="leading" secondItem="ON4-o8-77b" secondAttribute="leading" constant="20" id="knx-8e-hNT"/>
+                            <constraint firstItem="ON4-o8-77b" firstAttribute="trailing" secondItem="Zba-kd-Z7f" secondAttribute="trailing" constant="25" id="Sjp-sz-wuv"/>
+                            <constraint firstItem="Zba-kd-Z7f" firstAttribute="leading" secondItem="ON4-o8-77b" secondAttribute="leading" constant="25" id="knx-8e-hNT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ON4-o8-77b"/>
                     </view>
@@ -200,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ave-TM-hLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="-791"/>
+            <point key="canvasLocation" x="104.8" y="-791.37931034482767"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7be-r7-PCV">
