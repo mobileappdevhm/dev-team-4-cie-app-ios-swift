@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBAction func LogoutButtonPressed(_ sender: Any) {
+         self.performSegue(withIdentifier: "Login View Controller", sender: self)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

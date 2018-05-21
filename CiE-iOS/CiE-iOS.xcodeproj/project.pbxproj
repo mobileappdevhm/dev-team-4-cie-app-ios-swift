@@ -22,6 +22,8 @@
 		61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB520A748990067DB14 /* TimeTableViewModel.swift */; };
 		61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB720A748F10067DB14 /* FavoritesViewModel.swift */; };
 		61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB920A749410067DB14 /* SettingsViewModel.swift */; };
+		B50CAB7F20B19FBB00A82459 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CAB7E20B19FBB00A82459 /* LoginViewController.swift */; };
+		B50CAB8120B1A35200A82459 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50CAB8020B1A35200A82459 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		61574BB520A748990067DB14 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		61574BB720A748F10067DB14 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		61574BB920A749410067DB14 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		B50CAB7E20B19FBB00A82459 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B50CAB8020B1A35200A82459 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,7 @@
 				61574B3020A740E60067DB14 /* TimeTableViewController.swift */,
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
 				61574B3420A741B20067DB14 /* SettingsViewController.swift */,
+				B50CAB7E20B19FBB00A82459 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				61574BB520A748990067DB14 /* TimeTableViewModel.swift */,
 				61574BB720A748F10067DB14 /* FavoritesViewModel.swift */,
 				61574BB920A749410067DB14 /* SettingsViewModel.swift */,
+				B50CAB8020B1A35200A82459 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -295,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50CAB7F20B19FBB00A82459 /* LoginViewController.swift in Sources */,
 				61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */,
 				61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */,
 				61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */,
@@ -302,6 +309,7 @@
 				61574B2D20A73F9C0067DB14 /* CoursesViewController.swift in Sources */,
 				61574B2F20A740630067DB14 /* MapViewController.swift in Sources */,
 				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
+				B50CAB8120B1A35200A82459 /* LoginViewModel.swift in Sources */,
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
 				61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */,
 				61574BB420A748620067DB14 /* MapViewModel.swift in Sources */,
@@ -471,14 +479,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4UK4VFVY3L;
+				DEVELOPMENT_TEAM = CAPA586JX2;
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.hm.CiE-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "jack.tan.CiE-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -490,14 +498,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4UK4VFVY3L;
+				DEVELOPMENT_TEAM = CAPA586JX2;
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "edu.hm.CiE-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "jack.tan.CiE-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
