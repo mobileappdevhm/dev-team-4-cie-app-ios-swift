@@ -49,14 +49,39 @@
                     <view key="view" contentMode="scaleToFill" id="WBw-Hg-CsZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Qfn-an-aqg">
+                                <rect key="frame" x="20" y="40" width="335" height="538"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lothstr" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-Z2-S5f">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="179.5"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="karlstr" translatesAutoresizingMaskIntoConstraints="NO" id="EDb-Aw-1PN">
+                                        <rect key="frame" x="0.0" y="179.5" width="335" height="179"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pasing" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-XU-nKX">
+                                        <rect key="frame" x="0.0" y="358.5" width="335" height="179.5"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ntc-1H-0ga" firstAttribute="bottom" secondItem="Qfn-an-aqg" secondAttribute="bottom" constant="40" id="3BL-Fm-StZ"/>
+                            <constraint firstItem="Qfn-an-aqg" firstAttribute="leading" secondItem="ntc-1H-0ga" secondAttribute="leading" constant="20" id="IVd-ne-lfV"/>
+                            <constraint firstItem="ntc-1H-0ga" firstAttribute="trailing" secondItem="Qfn-an-aqg" secondAttribute="trailing" constant="20" id="RZi-NP-1Xe"/>
+                            <constraint firstItem="Qfn-an-aqg" firstAttribute="top" secondItem="ntc-1H-0ga" secondAttribute="top" constant="20" id="m8I-62-xp0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ntc-1H-0ga"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" id="K16-JC-f1X"/>
+                    <connections>
+                        <outlet property="lothstr" destination="hfy-Z2-S5f" id="fCV-aL-oiD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3M-By-7rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-652" y="920"/>
+            <point key="canvasLocation" x="-652" y="919.79010494752629"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="T6Y-9W-eMa">
@@ -116,7 +141,10 @@
     <resources>
         <image name="courses" width="24" height="24"/>
         <image name="favourite" width="24" height="24"/>
+        <image name="karlstr" width="1574" height="1574"/>
+        <image name="lothstr" width="1574" height="1574"/>
         <image name="map" width="24" height="24"/>
+        <image name="pasing" width="1574" height="1574"/>
         <image name="settings" width="24" height="24"/>
         <image name="timetable" width="24" height="24"/>
     </resources>
