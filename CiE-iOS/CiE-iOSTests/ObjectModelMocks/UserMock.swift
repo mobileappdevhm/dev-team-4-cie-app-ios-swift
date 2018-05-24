@@ -11,22 +11,24 @@ import Foundation
 
 
 class UserMock: UserProtocol {
+    init() {}
+    required init(withName name: String, andPassword: String) {}
     
-    private var setString:String?
-    hjhlkj;lk
-    required init(_ name: String) {}
+    var name: String { return injectedName}
+    var password: String { return injectedPassword}
+    var isExchange: Bool? { return injectedIsExchange}
+    var departments: Set<Department> { return injectedDepartments}
     
-    var name: String {
-        guard let returnString = setString else { return "" }
-        return returnString
-    }
+    var injectedName: String = ""
+    var injectedPassword: String = ""
+    var injectedIsExchange: Bool = true
+    var injectedDepartments: Set<Department> = []
     
-    @discardableResult
-    func setName(to name:String) -> UserProtocol {
-        setString = name
-        return self
-    }
+    func changePassword(to: String) {}
     
+    func becomeExchangeStudent() {}
     
+    func assignDepartments(_: Set<Department>?) {}
     
+    func assignDepartments(_: [Department]?) {}
 }

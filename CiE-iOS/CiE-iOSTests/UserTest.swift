@@ -11,22 +11,59 @@ import XCTest
 
 class UserTest: XCTestCase {
     
-    var user: UserProtocol?
-    let userName = "Manuel Neuer"
+    let initName = "Manuel"
+    let initPassword = "Swordfish"
+    
+    var sut: UserProtocol?
+    var departmentSet: Set<Department>?
+    var departmentArray: [Department]?
     
     override func setUp() {
         super.setUp()
-        user = User(userName)
+        sut = User(withName: initName, andPassword: initPassword)
+        departmentSet = Set<Department>()
+        departmentSet?.update(with: .FK01)
+        departmentSet?.update(with: .FK02)
+        departmentArray = [.FK01, .FK02]
     }
     
     override func tearDown() {
         super.tearDown()
-        user = nil
+        sut = nil
     }
     
-    func testgetName_userHasBeenIntialized_ReturnsNameInitializedWith() {
-        guard let user = user else { return }
-        XCTAssertEqual(user.name, userName)
+    //func test_UnitOfWork_StateUnderTest_ExpectedBehavior {
+    //     XCTAssert(bool)
+    //}
+    
+    func test_name_userHasBeenInitialized_userStoredName() {
+        XCTAssertEqual(sut?.name, initName)
     }
     
+    func test_password_userHasBeenInitialized_userStoredPassword() {
+        XCTAssertEqual(sut?.password, initPassword)
+    }
+    
+    func test_departments_userHasBeenInitialized_noDepartments() {
+        XCTAssertEqual(sut?.departments, [])
+    }
+
+    func test_exchangeStudentIndicator_hasNoValueExplicitlySet_ReturnsFalse() {
+        XCTAssertFalse(sut?.isExchange ?? true)
+    }
+    
+    func test_exchangeStudentIndicator_becameExchangeStudent_ReturnsTrue() {
+        sut?.becomeExchangeStudent()
+        XCTAssert(sut?.isExchange ?? false)
+    }
+    
+    func test_departments_userHasBeenGivenDepartmentsAsArray_departmentsThatWereGiven() {
+        sut?.assignDepartments(departmentArray)
+        XCTAssertEqual(Set(departmentArray!),sut?.departments)
+    }
+    
+    func test_departments_userHasBeenGivenDepartmentsAsSet_departmentsThatWereGiven() {
+        sut?.assignDepartments(departmentSet)
+        XCTAssertEqual(departmentSet!, sut?.departments)
+    }
 }

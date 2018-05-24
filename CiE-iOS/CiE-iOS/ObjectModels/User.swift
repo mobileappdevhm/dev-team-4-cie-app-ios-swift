@@ -25,62 +25,45 @@ enum Department: Int {
 }
 
 class User: UserProtocol {
-    var name: String { return internalName }
-    var password: String { return internalPassword }
-    var isExchange: Bool? {
-        guard let isExchangeStudent = isExchangeStudent else { return false }
-        return isExchangeStudent
-    }
-    var departments: Set<Department> {
-        guard let internalDepartments = internalDepartments else { return [] }
-        return internalDepartments
-    }
+    public private(set) var name: String
+    public private(set) var password: String
+    public private(set) var isExchange: Bool? = false
     
-    private var internalName: String
-    private var internalPassword: String
-    private var isExchangeStudent: Bool? = nil
-    private var internalDepartments: Set<Department>?
-    
-    private var hasDepartments:Bool {
-        if let _ = internalDepartments {
-            return true
-        }
-        return false
-    }
+    public private(set) var departments: Set<Department> = []
     
     required init(withName name: String, andPassword password: String) {
-        internalName = name
-        internalPassword = password
+        self.name = name
+        self.password = password
     }
 
     func changePassword(to newPassword: String) {
-        internalPassword = newPassword
+        password = newPassword
     }
     
     func becomeExchangeStudent() {
-        isExchangeStudent = true
+        isExchange = true
     }
     
     func assignDepartments(_ assignedDepartments: Set<Department>?) {
         guard let assignedDepartments = assignedDepartments else { return }
-        if hasDepartments {
+        if !departments.isEmpty {
             for department in assignedDepartments {
-                internalDepartments!.update(with: department)
+                departments.update(with: department)
             }
         } else {
-            internalDepartments = assignedDepartments
+            departments = assignedDepartments
         }
     }
     
     func assignDepartments(_ assignedDepartments: [Department]?) {
         guard let assignedDepartments = assignedDepartments else { return }
         var allAssignedDepartments = assignedDepartments
-        if hasDepartments {
-            for department in internalDepartments! {
+        if !departments.isEmpty {
+            for department in departments {
                 allAssignedDepartments.append(department)
             }
         }
-        internalDepartments = Set(allAssignedDepartments)
+        departments = Set(allAssignedDepartments)
     }
     
 }

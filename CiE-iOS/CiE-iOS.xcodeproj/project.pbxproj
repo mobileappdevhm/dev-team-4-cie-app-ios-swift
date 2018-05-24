@@ -10,7 +10,6 @@
 		61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574AFD20A739000067DB14 /* AppDelegate.swift */; };
 		61574B0320A739000067DB14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61574B0120A739000067DB14 /* Main.storyboard */; };
 		61574B0520A739010067DB14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61574B0420A739010067DB14 /* Assets.xcassets */; };
-		61574B1320A739010067DB14 /* CiE_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B1220A739010067DB14 /* CiE_iOSTests.swift */; };
 		61574B1E20A739010067DB14 /* CiE_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B1D20A739010067DB14 /* CiE_iOSUITests.swift */; };
 		61574B2D20A73F9C0067DB14 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */; };
 		61574B2F20A740630067DB14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B2E20A740630067DB14 /* MapViewController.swift */; };
@@ -51,7 +50,6 @@
 		61574B0420A739010067DB14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61574B0920A739010067DB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61574B0E20A739010067DB14 /* CiE-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CiE-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		61574B1220A739010067DB14 /* CiE_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiE_iOSTests.swift; sourceTree = "<group>"; };
 		61574B1420A739010067DB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61574B1920A739010067DB14 /* CiE-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CiE-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61574B1D20A739010067DB14 /* CiE_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CiE_iOSUITests.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 			isa = PBXGroup;
 			children = (
 				618C38ED20AEF66800B5C6FB /* ObjectModelMocks */,
-				61574B1220A739010067DB14 /* CiE_iOSTests.swift */,
 				61574B1420A739010067DB14 /* Info.plist */,
 				618C38EB20AEF48000B5C6FB /* UserTest.swift */,
 			);
@@ -341,7 +338,6 @@
 			files = (
 				618C38EF20AEF68000B5C6FB /* UserMock.swift in Sources */,
 				618C38EC20AEF48000B5C6FB /* UserTest.swift in Sources */,
-				61574B1320A739010067DB14 /* CiE_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
