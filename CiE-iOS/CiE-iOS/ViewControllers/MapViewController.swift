@@ -11,21 +11,44 @@ import UIKit
 class MapViewController: UIViewController {
     
     public private(set) var lastTappedImage: UIImageView?
+    public private(set) var maps: Set<UIImageView> = []
     
     @IBOutlet weak var lothstr: UIImageView!
+    @IBOutlet weak var karlstr: UIImageView!
+    @IBOutlet weak var pasing: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        lothstr.isUserInteractionEnabled = true
-        lothstr.addGestureRecognizer(tapGestureRecognizer)
-        dropShadow(on: lothstr)
-
+        fillMaps()
+        setUpStyling()
+        setUpBinding()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func setUpStyling() {
+        for image in maps {
+            dropShadow(on: image)
+        }
+    }
+    
+    private func setUpBinding() {
+        for image in maps {
+            image.isUserInteractionEnabled = true
+            image.addGestureRecognizer(UITapGestureRecognizer(
+                target: self,
+                action: #selector(imageTapped(tapGestureRecognizer:))
+            ))
+        }
+    }
+    
+    private func fillMaps() {
+        guard let lothstr = lothstr, let karlstr = karlstr, let pasing = pasing else { return }
+        maps.update(with: lothstr)
+        maps.update(with: karlstr)
+        maps.update(with: pasing)
     }
     
     private func dropShadow(on picture: UIImageView) {
@@ -37,10 +60,11 @@ class MapViewController: UIViewController {
     
     @objc
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        lastTappedImage = tapGestureRecognizer.view as? UIImageView
-        print("Tapped on Lothstr.")
+        guard let viewTapped = tapGestureRecognizer.view else { return }
+        guard let imageTapped = viewTapped as? UIImageView else { return }
+        lastTappedImage = imageTapped
+        print("Tapped on \(imageTapped).")
     }
-    
     
 }
 
