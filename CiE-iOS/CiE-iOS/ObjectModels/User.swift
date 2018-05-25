@@ -20,10 +20,6 @@ protocol UserProtocol {
     
 }
 
-enum Department: Int {
-    case FK01 = 1, FK02, FK03, FK04, FK05, FK06, FK07, FK08, FK09, FK10, FK11, FK12, FK13
-}
-
 class User: UserProtocol {
     public private(set) var name: String
     public private(set) var password: String
