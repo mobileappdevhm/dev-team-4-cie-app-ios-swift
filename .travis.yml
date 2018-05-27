@@ -3,4 +3,4 @@ xcode_project: CiE-iOS/CiE-iOS.xcodeproj # path to your xcodeproj folder
 xcode_scheme: CiE-iOS
 language: swift
 script:
-    - xcodebuild clean build -sdk iphonesimulator -workspace CiE-iOS/CiE-iOS.xcodeproj/project.xcworkspace -scheme CiE-iOSTests CODE_SIGNING_REQUIRED=NO
+    - xcodebuild clean build -sdk iphonesimulator -workspace CiE-iOS/CiE-iOS.xcodeproj/project.xcworkspace -scheme CiE-iOS CODE_SIGNING_REQUIRED=NO
