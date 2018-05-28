@@ -15,16 +15,10 @@ class UserTest: XCTestCase {
     let initPassword = "Swordfish"
     
     var sut: UserProtocol?
-    var departmentSet: Set<Department>?
-    var departmentArray: [Department]?
     
     override func setUp() {
         super.setUp()
         sut = User(withName: initName, andPassword: initPassword)
-        departmentSet = Set<Department>()
-        departmentSet?.update(with: .FK01)
-        departmentSet?.update(with: .FK02)
-        departmentArray = [.FK01, .FK02]
     }
     
     override func tearDown() {
@@ -58,12 +52,16 @@ class UserTest: XCTestCase {
     }
     
     func test_departments_userHasBeenGivenDepartmentsAsArray_departmentsThatWereGiven() {
-        sut?.assignDepartments(departmentArray)
-        XCTAssertEqual(Set(departmentArray!),sut?.departments)
+        let givenArray: [Department] = [.FK01, .FK02]
+        sut?.assignDepartments(givenArray)
+        XCTAssertEqual(Set(givenArray),sut?.departments)
     }
     
     func test_departments_userHasBeenGivenDepartmentsAsSet_departmentsThatWereGiven() {
+        var departmentSet = Set<Department>()
+        departmentSet.update(with: .FK01)
+        departmentSet.update(with: .FK02)
         sut?.assignDepartments(departmentSet)
-        XCTAssertEqual(departmentSet!, sut?.departments)
+        XCTAssertEqual(departmentSet, sut?.departments)
     }
 }
