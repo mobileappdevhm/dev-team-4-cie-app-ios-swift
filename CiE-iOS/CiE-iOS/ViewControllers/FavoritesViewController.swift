@@ -10,14 +10,19 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
+    @IBOutlet weak var submitStackView: UIStackView!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var alertHeight: NSLayoutConstraint!
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var detailsSwitch: UISwitch!
-    @IBOutlet weak var detailStackViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var detailsSeparatorWidth: NSLayoutConstraint!
+    @IBOutlet weak var detailsStackView: UIStackView!
     
     private let warningText = "Time conflicts detected!"
+    private lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpStyling()
@@ -37,6 +42,12 @@ class FavoritesViewController: UIViewController {
         warningLabel.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         
         detailsSwitch.setOn(false, animated: false)
+        detailsStackView.isHidden = true
+        
+        warningLabel.text = warningText
+        warningLabel.isHidden = true
+        
+        pinBackground(backgroundView, to: submitStackView)
     }
     
     private func setUpBinding() {
@@ -46,16 +57,29 @@ class FavoritesViewController: UIViewController {
     
     @objc
     func switchChanged(sender: UISwitch!) {
-        UIView.animate(withDuration: 0.8){
-            self.detailStackViewHeight.constant = sender.isOn ? CGFloat(100) : CGFloat(0)
-            self.detailsSeparatorWidth.constant = sender.isOn ? CGFloat(1) : CGFloat(0)
+        UIView.animate(withDuration: 0.2) {
+            self.detailsStackView.isHidden = !sender.isOn
         }
     }
     
     @objc
     func showAlert() {
-        warningLabel.text = warningText
-        alertHeight.constant = CGFloat(50)
+        warningLabel.isHidden = false
+    }
+    
+    private func pinBackground(_ view: UIView, to stackView: UIStackView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        stackView.insertSubview(view, at: 0)
+        pin(view: stackView, to: view)
+    }
+    
+    private func pin(view: UIView,to source: UIView) {
+        NSLayoutConstraint.activate([
+            source.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            source.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            source.topAnchor.constraint(equalTo: view.topAnchor),
+            source.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
     }
 }
 
