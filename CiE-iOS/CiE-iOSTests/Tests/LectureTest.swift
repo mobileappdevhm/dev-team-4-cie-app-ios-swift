@@ -11,7 +11,7 @@ import XCTest
 
 class LectureTest: XCTestCase {
     let initTitle = "Vorlesung"
-    let initProfessor = Professor()
+    let initProfessor = ProfessorMock()
     
     var sut: LectureProtocol?
 
@@ -25,7 +25,7 @@ class LectureTest: XCTestCase {
         sut = nil 
     }
     
-    func test_id_hasBeenInitialized_ReturnsID() {
+    func test_Id_HasBeenInitialized_ReturnsID() {
         XCTAssertNotNil(sut?.id)
     }
     
@@ -44,7 +44,7 @@ class LectureTest: XCTestCase {
         XCTAssertNotEqual(sut?.ects, setValue)
     }
     
-    func test_isSetUpState_HasNotBeenCompleted_ReturnsFalse() {
+    func test_IsSetUpState_HasNotBeenCompleted_ReturnsFalse() {
         XCTAssertFalse(sut?.isSetUp ?? true)
         sut?.add(date: LectureDate(
                     room: Room(floor: .Basement, number: 11, building: .R),
@@ -57,7 +57,7 @@ class LectureTest: XCTestCase {
         XCTAssertFalse(sut?.isSetUp ?? true)
     }
     
-    func test_isSetUpState_HasBeenCompleted_ReturnsTrue() {
+    func test_IsSetUpState_HasBeenCompleted_ReturnsTrue() {
         sut?.add(date: LectureDate(
             room: Room(floor: .Basement, number: 11, building: .R),
             date: Date(timeIntervalSinceNow: 0.0)
@@ -68,7 +68,7 @@ class LectureTest: XCTestCase {
         XCTAssert(sut?.isSetUp ?? false)
     }
     
-    func test_lectureDates_HasBeenInitialized_ReturnsEmptyArray() {
+    func test_LectureDates_HasBeenInitialized_ReturnsEmptyArray() {
         XCTAssertEqual(
             sut?.lectureDates ??
                 [LectureDate(room: Room(floor: .Basement, number: 11, building: .R),date: Date(timeIntervalSinceNow: 0.0))],
@@ -76,13 +76,13 @@ class LectureTest: XCTestCase {
         )
     }
     
-    func test_lectureDates_HasLectureDatesAdded_ReturnsAddedLectureDates() {
+    func test_LectureDates_HasLectureDatesAdded_ReturnsAddedLectureDates() {
         let setDepartments: [Department] = [.FK01, .FK04]
         sut?.isConnedtedTo(departments: setDepartments)
         XCTAssertEqual(sut?.connectedDepartments ?? [], setDepartments)
     }
     
-    func test_departments_HasBeenInitialized_ReturnsEmptyArray() {
+    func test_Departments_HasBeenInitialized_ReturnsEmptyArray() {
         XCTAssertEqual(sut?.connectedDepartments ?? [.FK01], [])
     }
     

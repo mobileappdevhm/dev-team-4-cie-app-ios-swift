@@ -17,8 +17,8 @@ class LectureDetailPage01Controller: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let prof = Professor()
-        prof.email = "socher@hm.edu"
+        let prof = Professor(withName: "Socher")
+        prof.setEmail(to: "socher@hm.edu")
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",

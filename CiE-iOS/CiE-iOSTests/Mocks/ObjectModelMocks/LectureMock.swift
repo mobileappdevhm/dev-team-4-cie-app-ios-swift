@@ -31,7 +31,7 @@ class LectureMock: LectureProtocol {
     var injectedIsSetUp: Bool = false
     var injectedDescription: String = ""
     
-    init() { self.professor = Professor() }
+    init() { self.professor = ProfessorMock()}
     
     required convenience init(withTitle: String, heldBy: ProfessorProtocol) { self.init() }
     

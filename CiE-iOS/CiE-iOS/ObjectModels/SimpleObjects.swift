@@ -67,6 +67,10 @@ enum ConflictIndicator: String {
     }
 }
 
+enum Gender: String {
+    case male, female
+}
+
 struct FavouriteConflict {
     let lectureA: Lecture
     let lectureB: Lecture
