@@ -144,7 +144,6 @@
 				61574B0120A739000067DB14 /* Main.storyboard */,
 				61574B0420A739010067DB14 /* Assets.xcassets */,
 				61574B0920A739010067DB14 /* Info.plist */,
-				61C4671D20BC9F6000AE35BA /* LectureDetail.storyboard */,
 			);
 			path = "CiE-iOS";
 			sourceTree = "<group>";
@@ -218,6 +217,7 @@
 		61E43A4220BF4FBF004E8F27 /* LectureDetails */ = {
 			isa = PBXGroup;
 			children = (
+				61C4671D20BC9F6000AE35BA /* LectureDetail.storyboard */,
 				61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */,
 				61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */,
 				61C4671F20BCA34B00AE35BA /* LectureDetailViewController.swift */,

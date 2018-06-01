@@ -15,8 +15,10 @@ class LectureDetailPage03Controller: UIViewController{
     
     @IBOutlet weak var addFavourite: UIButton!
     @IBOutlet weak var sendEmail: UIButton!
-    private var titleAddFavourite: String {
-        return addFavouriteDoesAdd ? "Add to Favourties" : "No longer Favourite"
+    private let emptyFavourties = UIImage(named: "favourite_border")
+    private let filledFavourites = UIImage(named: "favourite")
+    private var addFavouriteImage: UIImage {
+        return (addFavouriteDoesAdd ? emptyFavourties : filledFavourites)!
     }
     private var addFavouriteDoesAdd = true
     var model: LectureDetailViewModelProtocol?
@@ -49,7 +51,7 @@ class LectureDetailPage03Controller: UIViewController{
         guard let id = model?.lecture.id else { return }
         moveToFavourites(usingID: id)
         addFavouriteDoesAdd = !addFavouriteDoesAdd
-        addFavourite.setTitle(titleAddFavourite, for: .normal)
+        addFavourite.setImage(addFavouriteImage, for: .normal)
     }
     
     @objc
@@ -74,5 +76,13 @@ class LectureDetailPage03Controller: UIViewController{
         btn.layer.cornerRadius = 5
         btn.layer.borderWidth = 1
         btn.layer.borderColor = UIColor.black.cgColor
+    }
+}
+
+extension UIImageView {
+    func setImageColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
     }
 }
