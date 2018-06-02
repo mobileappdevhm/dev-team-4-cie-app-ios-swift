@@ -10,16 +10,22 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var passwordField: UITextField!
+
+    @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func LoginButtonPressed(_ sender: Any) {
         //print("Button pressed!")
         self.performSegue(withIdentifier: "Tab Bar Controller", sender: self)
     }
+    
+    private func setupstyling(){
+        loginButton.setTitle("Log in", for: .normal)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        setupstyling()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

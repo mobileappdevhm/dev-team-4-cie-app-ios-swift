@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdd-bM-zzl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdd-bM-zzl">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -214,8 +214,7 @@
                         <viewLayoutGuide key="safeArea" id="ON4-o8-77b"/>
                     </view>
                     <connections>
-                        <outlet property="passwordField" destination="l7I-nV-Qxq" id="pmn-hH-uLZ"/>
-                        <outlet property="usernameField" destination="GC5-bD-g4Z" id="Tw1-V4-w0K"/>
+                        <outlet property="loginButton" destination="g2l-5U-1Qm" id="1BZ-iR-FbG"/>
                         <segue destination="F6s-Mq-vKC" kind="showDetail" identifier="Tab Bar Controller" id="2Lz-c8-jKo"/>
                     </connections>
                 </viewController>

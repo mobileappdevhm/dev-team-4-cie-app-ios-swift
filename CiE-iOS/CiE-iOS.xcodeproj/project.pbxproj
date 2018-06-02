@@ -16,7 +16,6 @@
 		61574B2F20A740630067DB14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B2E20A740630067DB14 /* MapViewController.swift */; };
 		61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3020A740E60067DB14 /* TimeTableViewController.swift */; };
 		61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3220A7415D0067DB14 /* FavoritesViewController.swift */; };
-		61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3420A741B20067DB14 /* SettingsViewController.swift */; };
 		61574BB220A7474A0067DB14 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB120A7474A0067DB14 /* CoursesViewModel.swift */; };
 		61574BB420A748620067DB14 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB320A748620067DB14 /* MapViewModel.swift */; };
 		61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB520A748990067DB14 /* TimeTableViewModel.swift */; };
@@ -59,7 +58,6 @@
 		61574B2E20A740630067DB14 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		61574B3020A740E60067DB14 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		61574B3220A7415D0067DB14 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		61574B3420A741B20067DB14 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		61574BB120A7474A0067DB14 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
 		61574BB320A748620067DB14 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		61574BB520A748990067DB14 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				61574B2E20A740630067DB14 /* MapViewController.swift */,
 				61574B3020A740E60067DB14 /* TimeTableViewController.swift */,
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
-				61574B3420A741B20067DB14 /* SettingsViewController.swift */,
 				B50CAB7E20B19FBB00A82459 /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
@@ -304,7 +301,6 @@
 				B50CAB7F20B19FBB00A82459 /* LoginViewController.swift in Sources */,
 				61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */,
 				61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */,
-				61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */,
 				61574BB220A7474A0067DB14 /* CoursesViewModel.swift in Sources */,
 				61574B2D20A73F9C0067DB14 /* CoursesViewController.swift in Sources */,
 				61574B2F20A740630067DB14 /* MapViewController.swift in Sources */,
