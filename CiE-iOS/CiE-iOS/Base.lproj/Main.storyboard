@@ -31,7 +31,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="LogoutButtonPressed:" destination="UKN-jc-f5h" eventType="touchUpInside" id="5NJ-yf-2zX"/>
+                                    <action selector="logoutButtonPressed:" destination="UKN-jc-f5h" eventType="touchUpInside" id="5NJ-yf-2zX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -43,6 +43,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="drO-YU-qnK"/>
                     <connections>
+                        <outlet property="logOut" destination="zYD-G2-w4p" id="bJ7-ec-y8S"/>
                         <segue destination="gdd-bM-zzl" kind="showDetail" identifier="Login View Controller" id="cYV-JA-40U"/>
                     </connections>
                 </viewController>
@@ -184,7 +185,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="LoginButtonPressed:" destination="gdd-bM-zzl" eventType="touchUpInside" id="yDb-BE-Gcr"/>
+                                                    <action selector="loginButtonPressed:" destination="gdd-bM-zzl" eventType="touchUpInside" id="yDb-BE-Gcr"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4i-Ph-3Ap">
@@ -214,7 +215,7 @@
                         <viewLayoutGuide key="safeArea" id="ON4-o8-77b"/>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="g2l-5U-1Qm" id="1BZ-iR-FbG"/>
+                        <outlet property="logoutButton" destination="g2l-5U-1Qm" id="1BZ-iR-FbG"/>
                         <segue destination="F6s-Mq-vKC" kind="showDetail" identifier="Tab Bar Controller" id="2Lz-c8-jKo"/>
                     </connections>
                 </viewController>

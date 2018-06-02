@@ -11,15 +11,15 @@ import UIKit
 class LoginViewController: UIViewController {
     
 
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
     
-    @IBAction func LoginButtonPressed(_ sender: Any) {
+    @IBAction func loginButtonPressed(_ sender: Any) {
         //print("Button pressed!")
         self.performSegue(withIdentifier: "Tab Bar Controller", sender: self)
     }
     
     private func setupstyling(){
-        loginButton.setTitle("Log in", for: .normal)
+        logoutButton.setTitle("Log in", for: .normal)
     }
     
     override func viewDidLoad() {
