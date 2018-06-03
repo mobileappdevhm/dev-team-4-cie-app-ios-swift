@@ -10,7 +10,7 @@ import UIKit
 
 class CoursesViewController: UIViewController{
 
-
+@IBOutlet weak var dateTextField: UITextField!
     
     
     override func viewDidLoad() {

@@ -16,7 +16,7 @@
             <objects>
                 <viewController id="UKN-jc-f5h" customClass="SettingsViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CAT-8t-VTz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sxt-mi-x5u">
@@ -67,7 +67,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CoursesViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zl1-JQ-QCH">
@@ -114,11 +114,11 @@
             <objects>
                 <viewController id="AOZ-lx-7lT" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WBw-Hg-CsZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qfn-an-aqg">
-                                <rect key="frame" x="100" y="70" width="175" height="533"/>
+                                <rect key="frame" x="100" y="94" width="175" height="533"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-JC-uKY">
                                         <rect key="frame" x="0.0" y="0.0" width="175" height="155"/>
@@ -199,29 +199,41 @@
         <!--Timetable-->
         <scene sceneID="T6Y-9W-eMa">
             <objects>
-                <viewController id="5yk-PN-WVX" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5yk-PN-WVX" customClass="TimetableViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mUU-i5-V3H">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-mC-XAm">
+                                <rect key="frame" x="114" y="121" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6hP-qj-GrE"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timetable" image="timetable" id="H7c-y3-rsv"/>
+                    <connections>
+                        <outlet property="dateField" destination="Cr9-mC-XAm" id="k3S-o4-MgG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNQ-Io-CZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="105" y="920"/>
+            <point key="canvasLocation" x="104.8" y="919.79010494752629"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="m6S-6q-X5g">
             <objects>
                 <viewController id="JPt-0N-Ilw" customClass="FavoritesViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iG3-cQ-PKS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5aF-xr-yWH">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBQ-um-Qrf">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -230,18 +242,18 @@
                                         </items>
                                     </navigationBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8l-1G-NoA">
-                                        <rect key="frame" x="0.0" y="54" width="375" height="218"/>
+                                        <rect key="frame" x="0.0" y="54" width="375" height="305"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVM-ez-VXF">
-                                        <rect key="frame" x="0.0" y="282" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="369" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ycb-0i-qTO"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-gg-bLf">
-                                        <rect key="frame" x="0.0" y="293" width="375" height="31"/>
+                                        <rect key="frame" x="0.0" y="380" width="375" height="31"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idA-EN-4X9">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="31"/>
@@ -263,7 +275,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0eB-qV-t2d">
-                                        <rect key="frame" x="0.0" y="334" width="375" height="113"/>
+                                        <rect key="frame" x="0.0" y="421" width="375" height="113"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-yu-Joy">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -305,14 +317,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jw-a5-Rqj">
-                                        <rect key="frame" x="0.0" y="457" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="544" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="SbE-zP-4j4"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OMG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z80-SM-WJq">
-                                        <rect key="frame" x="0.0" y="468" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="555" width="375" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="voA-GG-ooA"/>
                                         </constraints>
@@ -321,7 +333,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="omU-1k-59m">
-                                        <rect key="frame" x="0.0" y="528" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="615" width="375" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R51-he-7LU">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="50"/>
@@ -359,14 +371,14 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv8-4g-UTy">
-                                        <rect key="frame" x="0.0" y="588" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="675" width="375" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="Q43-5S-fL2"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbr-Dq-qjQ">
-                                        <rect key="frame" x="0.0" y="598" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="685" width="375" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="PgF-cp-WBp"/>

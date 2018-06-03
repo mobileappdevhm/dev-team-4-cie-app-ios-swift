@@ -18,7 +18,6 @@
 		61574B1E20A739010067DB14 /* CiE_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B1D20A739010067DB14 /* CiE_iOSUITests.swift */; };
 		61574B2D20A73F9C0067DB14 /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */; };
 		61574B2F20A740630067DB14 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B2E20A740630067DB14 /* MapViewController.swift */; };
-		61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3020A740E60067DB14 /* TimeTableViewController.swift */; };
 		61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3220A7415D0067DB14 /* FavoritesViewController.swift */; };
 		61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574B3420A741B20067DB14 /* SettingsViewController.swift */; };
 		61574BB220A7474A0067DB14 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB120A7474A0067DB14 /* CoursesViewModel.swift */; };
@@ -35,6 +34,7 @@
 		61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4672120BCA59300AE35BA /* LectureDetailViewModel.swift */; };
 		61E5244F20BF12F400BBA33D /* LectureDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */; };
 		61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */; };
+		B57C73C420C46F3E007E354A /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C73C320C46F3E007E354A /* TimetableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +72,6 @@
 		61574B1F20A739010067DB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
 		61574B2E20A740630067DB14 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		61574B3020A740E60067DB14 /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		61574B3220A7415D0067DB14 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		61574B3420A741B20067DB14 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		61574BB120A7474A0067DB14 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +88,7 @@
 		61C4672120BCA59300AE35BA /* LectureDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewModel.swift; sourceTree = "<group>"; };
 		61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPageViewController.swift; sourceTree = "<group>"; };
 		61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage03Controller.swift; sourceTree = "<group>"; };
+		B57C73C320C46F3E007E354A /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,9 +176,9 @@
 				61E43A4220BF4FBF004E8F27 /* LectureDetails */,
 				61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */,
 				61574B2E20A740630067DB14 /* MapViewController.swift */,
-				61574B3020A740E60067DB14 /* TimeTableViewController.swift */,
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
 				61574B3420A741B20067DB14 /* SettingsViewController.swift */,
+				B57C73C320C46F3E007E354A /* TimetableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -373,6 +373,9 @@
 				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
 				61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */,
+				B57C73C420C46F3E007E354A /* TimetableViewController.swift in Sources */,
+				6121A4BD20B85A12006D7660 /* Professor.swift in Sources */,
+				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
 				618C38EA20AEF2B900B5C6FB /* User.swift in Sources */,
 				61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */,
 				61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */,
