@@ -204,20 +204,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-mC-XAm">
-                                <rect key="frame" x="114" y="121" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-mC-XAm">
+                                <rect key="frame" x="20" y="54" width="335" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gFN-em-WcF"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcX-FU-5zq">
+                                <rect key="frame" x="156" y="174" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6hP-qj-GrE" firstAttribute="trailing" secondItem="Cr9-mC-XAm" secondAttribute="trailing" constant="20" id="K1I-Y4-Fqd"/>
+                            <constraint firstItem="Cr9-mC-XAm" firstAttribute="top" secondItem="6hP-qj-GrE" secondAttribute="top" constant="10" id="M1N-KT-5oY"/>
+                            <constraint firstItem="Cr9-mC-XAm" firstAttribute="leading" secondItem="6hP-qj-GrE" secondAttribute="leading" constant="20" id="OUF-Wf-2V2"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6hP-qj-GrE"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timetable" image="timetable" id="H7c-y3-rsv"/>
                     <connections>
                         <outlet property="dateField" destination="Cr9-mC-XAm" id="k3S-o4-MgG"/>
+                        <outlet property="dayLabel" destination="AcX-FU-5zq" id="LBF-QO-TV0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNQ-Io-CZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
