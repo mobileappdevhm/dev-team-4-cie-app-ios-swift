@@ -66,5 +66,6 @@ class MapViewController: UIViewController {
         print("Tapped on \(imageTapped).")
     }
     
+    
 }
 

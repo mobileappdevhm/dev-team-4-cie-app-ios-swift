@@ -63,6 +63,9 @@ class LectureDetailPage03Controller: UIViewController{
     }
     
     private func openEmail(withTarget email: String) {
+        if let url = URL(string: "mailto:\(email)?subject=Contact%20from%20CiE-App"){
+            UIApplication.shared.open(url)
+        }
         print("open Email for \(email)")
     }
     
