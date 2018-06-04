@@ -17,6 +17,7 @@ protocol LectureProtocol {
     var isCiE: Bool? { get }
     var professor: Professor { get set }
     var isSetUp: Bool { get }
+    var description: String { get }
     
     init(withTitle: String, heldBy: Professor)
     
@@ -34,6 +35,7 @@ class Lecture: LectureProtocol {
     public private(set) var lectureDates: Set<LectureDate> = []
     public private(set) var ects: Int?
     public private(set) var isCiE: Bool?
+    public private(set) var description: String
     
     var professor: Professor
     var isSetUp: Bool {
@@ -47,6 +49,7 @@ class Lecture: LectureProtocol {
         self.title = title
         self.professor = professor
         id = UUID()
+        self.description = "dummy description that actually is pretty long so you do not feel like its fake or anything. This just shows how much can be written here."
     }
     
     func setECTS(to ects: Int) {

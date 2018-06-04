@@ -11,6 +11,8 @@ import Foundation
 @testable import CiE_iOS
 
 class LectureMock: LectureProtocol {
+    var description: String { return injectedDescription }
+    
     var id: UUID { return injectedUUID }
     var title: String { return injectedTitle }
     var connectedDepartments: [Department] { return injectedDepartments }
@@ -27,6 +29,7 @@ class LectureMock: LectureProtocol {
     var injectedECTS: Int?
     var injectedIsCiE: Bool?
     var injectedIsSetUp: Bool = false
+    var injectedDescription: String = ""
     
     init() { self.professor = Professor() }
     
