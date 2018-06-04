@@ -17,24 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="CAT-8t-VTz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYD-G2-w4p">
-                                <rect key="frame" x="211" y="109" width="126" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Log out">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="logoutButtonPressed:" destination="UKN-jc-f5h" eventType="touchUpInside" id="5NJ-yf-2zX"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6hn-0f-PMM"/>
                         <userDefinedRuntimeAttributes>
@@ -42,10 +24,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="drO-YU-qnK"/>
-                    <connections>
-                        <outlet property="logOut" destination="zYD-G2-w4p" id="bJ7-ec-y8S"/>
-                        <segue destination="gdd-bM-zzl" kind="showDetail" identifier="Login View Controller" id="cYV-JA-40U"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHH-zN-4M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
