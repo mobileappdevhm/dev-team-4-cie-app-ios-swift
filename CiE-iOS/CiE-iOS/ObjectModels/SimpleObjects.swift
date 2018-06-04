@@ -49,10 +49,12 @@ struct LectureDate: Hashable {
     
     let room: Room
     let date: Date
+    let duration: Double
     
-    init(room: Room, date: Date) {
+    init(room: Room, date: Date, durationInHours: Double) {
         self.room = room
         self.date = date
+        self.duration = durationInHours
         self.hashValue = room.number * room.floor.rawValue / 7
     }
 }
