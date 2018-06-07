@@ -10,4 +10,5 @@ import Foundation
 
 class Professor {
     var email: String?
+    var name: String?
 }

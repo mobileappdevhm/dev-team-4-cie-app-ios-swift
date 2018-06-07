@@ -12,17 +12,16 @@ import UIKit
 
 class LectureDetailPage03Controller: UIViewController{
     
-    
-    @IBOutlet weak var addFavourite: UIButton!
-    @IBOutlet weak var sendEmail: UIButton!
-    private let emptyFavourties = UIImage(named: "favourite_border")
-    private let filledFavourites = UIImage(named: "favourite")
-    private var addFavouriteImage: UIImage {
-        return (addFavouriteDoesAdd ? emptyFavourties : filledFavourites)!
+    @IBOutlet weak var favourite: UIImageView!
+    @IBOutlet weak var email: UIImageView!
+    private let emptyFavourties = UIImage(named: "favourite_border")?.withRenderingMode(.alwaysTemplate)
+    private let filledFavourites = UIImage(named: "favourite")?.withRenderingMode(.alwaysTemplate)
+    private var addFavouriteImage: UIImage? {
+        return (addFavouriteDoesAdd ? emptyFavourties : filledFavourites)
     }
+    private let addContactImage: UIImage? = UIImage(named: "settings_email")?.withRenderingMode(.alwaysTemplate)
     private var addFavouriteDoesAdd = true
     var model: LectureDetailViewModelProtocol?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,43 +31,68 @@ class LectureDetailPage03Controller: UIViewController{
                 heldBy: Professor()
             ))
         model?.lecture.professor.email = "socher@hm.edu"
+        model?.lecture.professor.name = "Socher"
         setUpStyling()
         setUpBinding()
     }
     
     private func setUpStyling() {
-        style(button: addFavourite)
-        style(button: sendEmail)
+        favourite.image = addFavouriteImage
+        favourite.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        favourite.tintColor = UIColor.red.withAlphaComponent(0.7)
+        
+        email.image = addContactImage
+        email.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        email.tintColor = UIColor.black.withAlphaComponent(0.6)
     }
     
     private func setUpBinding() {
-        sendEmail.addTarget(self, action: #selector(sendEmailAction), for: .touchUpInside)
-        addFavourite.addTarget(self, action: #selector(addToFavourite), for: .touchUpInside)
+        let favouriteTap = UITapGestureRecognizer(target: self, action: #selector(addToFavourite(tapGestureRecognizer:)))
+        let emailTap = UITapGestureRecognizer(target: self, action: #selector(sendEmailAction(tapGestureRecognizer:)))
+        email.isUserInteractionEnabled = true
+        favourite.isUserInteractionEnabled = true
+        favourite.addGestureRecognizer(favouriteTap)
+        email.addGestureRecognizer(emailTap)
     }
     
     @objc
-    func addToFavourite() {
+    func addToFavourite(tapGestureRecognizer recon: UITapGestureRecognizer) {
         guard let id = model?.lecture.id else { return }
         moveToFavourites(usingID: id)
         addFavouriteDoesAdd = !addFavouriteDoesAdd
-        addFavourite.setImage(addFavouriteImage, for: .normal)
+        favourite.image = addFavouriteImage
     }
     
     @objc
-    func sendEmailAction() {
-        guard let email = model?.lecture.professor.email else { return }
-        openEmail(withTarget: email)
+    func sendEmailAction(tapGestureRecognizer recon: UITapGestureRecognizer) {
+        guard let email = model?.lecture.professor.email, let prof = model?.lecture.professor.name else { return }
+        openEmail(withTarget: email, adressing: prof )
     }
+    
+    func showEmailAlert(wantsToSendTo email: String, named prof: String) {
+        let myAlertController = AlertService.showConfirmAlert(
+                titled: "Send an email?",
+                withSubtitle: "Do you want to contact the professor via email?",
+                onCancel: { UIAlertAction -> Void in
+                
+                },
+                onConfirm: { UIAlertAction -> Void in
+                    if let url = URL(string: "mailto:\(email)?subject=Dear%20Prof.%20\(prof)%20%20-%20%20CIEApp"){
+                        UIApplication.shared.open(url)
+                    }
+                }
+            )
+        self.present(myAlertController, animated: true, completion: nil)
+    }
+
     
     private func moveToFavourites(usingID id: UUID) {
-        print("add Lecture with id:\(id)")
+        guard let lecture = model?.lecture else { return }
+        addFavouriteDoesAdd ? FavouriteService.add(lecture) : FavouriteService.remove(lecture)
     }
     
-    private func openEmail(withTarget email: String) {
-        if let url = URL(string: "mailto:\(email)?subject=Contact%20from%20CiE-App"){
-            UIApplication.shared.open(url)
-        }
-        print("open Email for \(email)")
+    private func openEmail(withTarget email: String, adressing name: String) {
+        showEmailAlert(wantsToSendTo: email, named: name)
     }
     
     private func style(button btn: UIButton) {
@@ -76,13 +100,5 @@ class LectureDetailPage03Controller: UIViewController{
         btn.layer.cornerRadius = 5
         btn.layer.borderWidth = 1
         btn.layer.borderColor = UIColor.black.cgColor
-    }
-}
-
-extension UIImageView {
-    func setImageColor(color: UIColor) {
-        let templateImage = self.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        self.image = templateImage
-        self.tintColor = color
     }
 }

@@ -28,7 +28,12 @@ protocol LectureProtocol {
     func add(date: LectureDate?)
 }
 
-class Lecture: LectureProtocol {
+class Lecture: LectureProtocol,Equatable {
+    
+    static func == (lhs: Lecture, rhs: Lecture) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     public private(set) var id: UUID
     public private(set) var title: String
     public private(set) var connectedDepartments: [Department] = []
