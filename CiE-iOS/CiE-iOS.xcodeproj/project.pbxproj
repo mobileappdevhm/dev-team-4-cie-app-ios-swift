@@ -35,6 +35,9 @@
 		61E5244F20BF12F400BBA33D /* LectureDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */; };
 		61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */; };
 		B57C73C420C46F3E007E354A /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C73C320C46F3E007E354A /* TimeTableViewController.swift */; };
+		B570C3ED20C93AEF00EA385B /* TimetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570C3EC20C93AEF00EA385B /* TimetableCell.swift */; };
+		B57C73C420C46F3E007E354A /* TimetableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57C73C320C46F3E007E354A /* TimetableViewController.swift */; };
+		B5888C6E20CB26AF00989AE1 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5888C6D20CB26AE00989AE1 /* Timetable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +92,9 @@
 		61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPageViewController.swift; sourceTree = "<group>"; };
 		61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage03Controller.swift; sourceTree = "<group>"; };
 		B57C73C320C46F3E007E354A /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		B570C3EC20C93AEF00EA385B /* TimetableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableCell.swift; sourceTree = "<group>"; };
+		B57C73C320C46F3E007E354A /* TimetableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimetableViewController.swift; sourceTree = "<group>"; };
+		B5888C6D20CB26AE00989AE1 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,8 @@
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
 				61574B3420A741B20067DB14 /* SettingsViewController.swift */,
 				B57C73C320C46F3E007E354A /* TimeTableViewController.swift */,
+				B570C3EC20C93AEF00EA385B /* TimetableCell.swift */,
+				B5888C6D20CB26AE00989AE1 /* Timetable.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -362,9 +370,12 @@
 				61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */,
 				61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */,
 				61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */,
+				B5888C6E20CB26AF00989AE1 /* Timetable.swift in Sources */,
 				61574BB220A7474A0067DB14 /* CoursesViewModel.swift in Sources */,
 				6121A4BB20B84DE8006D7660 /* Services.swift in Sources */,
 				61E5244F20BF12F400BBA33D /* LectureDetailPageViewController.swift in Sources */,
+				6121A4BB20B84DE8006D7660 /* ConstantContainer.swift in Sources */,
+				B570C3ED20C93AEF00EA385B /* TimetableCell.swift in Sources */,
 				61574B2D20A73F9C0067DB14 /* CoursesViewController.swift in Sources */,
 				61C4672020BCA34B00AE35BA /* LectureDetailViewController.swift in Sources */,
 				61574B2F20A740630067DB14 /* MapViewController.swift in Sources */,

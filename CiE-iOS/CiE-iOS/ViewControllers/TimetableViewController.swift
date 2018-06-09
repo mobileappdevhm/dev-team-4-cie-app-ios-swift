@@ -9,19 +9,38 @@
 import Foundation
 import UIKit
 
-class TimeTableViewController: UIViewController {
+class TimeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return timetables.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimetableCell") as? TimetableCell else { return UITableViewCell() }
+        cell.courseLabel.text = timetables[indexPath.row].course
+        cell.timeLabel.text = timetables[indexPath.row].time
+        cell.roomLabel.text = timetables[indexPath.row].room
+        cell.campusLabel.text = timetables[indexPath.row].campus
+        
+        return cell
+    }
+    
     
     @IBOutlet weak var dateField: UITextField!
-    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var timetableTableView: UITableView!
     
     let picker = UIDatePicker()
+    final let url = URL(string: "https://api.myjson.com/bins/170qxu")
+    private var timetables = [Timetable]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       createDatePicker()
-        dayLabel.text = "\(dateField)"
+        createDatePicker()
+        timetableTableView.delegate = self
+        timetableTableView.dataSource = self
+        downloadJSON()
     }
-
+    
+    //date selection feature
     func createDatePicker(){
         
         //toolbar
@@ -51,5 +70,29 @@ class TimeTableViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    //download data from json
+    func downloadJSON(){
+        guard let downloadURL = url else { return }
+        URLSession.shared.dataTask(with: downloadURL) { data, URLResponse, error in
+            guard let data = data, error == nil, URLResponse != nil else
+             {print ("not downloaded")
+                return
+            }
+            print("downloaded")
+            do{
+                let decoder = JSONDecoder()
+                let downloadtimetables = try decoder.decode(Timetables.self, from: data)
+                self.timetables = downloadtimetables.timetables
+                DispatchQueue.main.async {
+                    self.timetableTableView.reloadData()
+                }
+            } catch {
+                print("something wrong after downloaded")
+            }
+    }.resume()
+    
+
+    
 }
 
+}

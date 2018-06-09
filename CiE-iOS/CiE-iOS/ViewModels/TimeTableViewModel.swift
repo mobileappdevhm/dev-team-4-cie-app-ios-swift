@@ -6,6 +6,8 @@
 //  Copyright © 2018 Nikita Hans. All rights reserved.
 //
 
+import UIKit
+
 protocol TimeTableViewModelProtocol {
     
 }
@@ -13,3 +15,5 @@ protocol TimeTableViewModelProtocol {
 class TimeTableViewModel: TimeTableViewModelProtocol {
     
 }
+
+
