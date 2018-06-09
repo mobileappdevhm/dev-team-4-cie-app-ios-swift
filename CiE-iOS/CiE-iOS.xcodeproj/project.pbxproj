@@ -145,6 +145,7 @@
 		61574AFC20A739000067DB14 /* CiE-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B570C3EC20C93AEF00EA385B /* TimetableCell.swift */,
 				618C38E820AEF29500B5C6FB /* ObjectModels */,
 				61574BB020A747350067DB14 /* ViewModels */,
 				61574B2B20A73F820067DB14 /* ViewControllers */,
@@ -210,6 +211,8 @@
 				618C38E920AEF2B900B5C6FB /* User.swift */,
 				6121A4B820B84587006D7660 /* Lecture.swift */,
 				6121A4BA20B84DE8006D7660 /* Services.swift */,
+				B5888C6D20CB26AE00989AE1 /* Timetable.swift */,
+				6121A4BA20B84DE8006D7660 /* ConstantContainer.swift */,
 				6121A4BC20B85A12006D7660 /* Professor.swift */,
 			);
 			path = ObjectModels;
