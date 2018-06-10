@@ -8,7 +8,12 @@
 
 import Foundation
 
-class Professor {
+protocol ProfessorProtocol {
+    var email: String? { get set }
+    var name: String? { get set }
+}
+
+class Professor: ProfessorProtocol {
     var email: String?
     var name: String?
 }

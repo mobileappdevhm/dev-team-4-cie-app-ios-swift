@@ -16,6 +16,7 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var detailsSwitch: UISwitch!
     @IBOutlet weak var detailsStackView: UIStackView!
     
+    private var model: FavoritesViewModelProtocol?
     private let warningText = "Time conflicts detected!"
     private lazy var backgroundView: UIView = {
         let view = UIView()
@@ -25,6 +26,7 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model = FavoritesViewModel()
         setUpStyling()
         setUpBinding()
     }
@@ -51,7 +53,7 @@ class FavoritesViewController: UIViewController {
     }
     
     private func setUpBinding() {
-        submitButton.addTarget(self, action: #selector(showAlert), for: UIControlEvents.touchUpInside)
+        submitButton.addTarget(self, action: #selector(showAlertIfConflicting), for: UIControlEvents.touchUpInside)
         detailsSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: UIControlEvents.valueChanged)
     }
     
@@ -59,12 +61,25 @@ class FavoritesViewController: UIViewController {
     func switchChanged(sender: UISwitch!) {
         UIView.animate(withDuration: 0.2) {
             self.detailsStackView.isHidden = !sender.isOn
+            self.warningLabel.isHidden = !sender.isOn
         }
     }
     
     @objc
-    func showAlert() {
-        warningLabel.isHidden = false
+    func showAlertIfConflicting() {
+        guard let needsAlert = model?.hasConflicts, let conflict = model?.conflictForAlert else { return }
+        guard needsAlert else { return }
+        let myAlertController = AlertService.showConfirmAlert(
+            titled: "Conflict!",
+            withSubtitle: "\(conflict.alertDescription()) Are you sure you want to submit your selection?",
+            onCancel: { UIAlertAction -> Void in
+                print("aborted")
+            },
+            onConfirm: { UIAlertAction -> Void in
+                print("confirmed")
+            }
+        )
+        self.present(myAlertController, animated: true, completion: nil)
     }
     
     private func pinBackground(_ view: UIView, to stackView: UIStackView) {

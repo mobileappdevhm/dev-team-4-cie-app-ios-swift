@@ -37,6 +37,28 @@ enum Building: String {
     case A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
 }
 
+enum ConflictIndicator: String {
+    case time = "Time"
+    case location = "Location"
+    case other = "Other"
+}
+
+struct FavouriteConflict {
+    let lectureA: Lecture
+    let lectureB: Lecture
+    let reason: ConflictIndicator
+    
+    init(between A: Lecture, and B: Lecture, becauseOf reason: ConflictIndicator) {
+        lectureA = A
+        lectureB = B
+        self.reason = reason
+    }
+    
+    func alertDescription() -> String {
+        return "\(reason.rawValue)-Conflicts between Lecture \(lectureA.title) and \(lectureB.title) detected."
+    }
+}
+
 struct LectureDate: Hashable {
     static func == (lhs: LectureDate, rhs: LectureDate) -> Bool {
         return lhs.date == rhs.date && rhs.room.getNameRepresentation() == lhs.room.getNameRepresentation()

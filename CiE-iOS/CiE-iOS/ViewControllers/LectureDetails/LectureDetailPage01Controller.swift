@@ -17,12 +17,13 @@ class LectureDetailPage01Controller: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let prof = Professor()
+        prof.email = "socher@hm.edu"
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",
-                heldBy: Professor()
+                heldBy: prof
         ))
-        model?.lecture.professor.email = "socher@hm.edu"
         setUpStyling()
     }
     
