@@ -13,6 +13,7 @@ protocol LectureDetailViewModelProtocol {
     var description: String { get }
     var contact: String { get }
     
+    func isFavourite() -> Bool
 }
 
 class LectureDetailViewModel: LectureDetailViewModelProtocol {
@@ -20,6 +21,11 @@ class LectureDetailViewModel: LectureDetailViewModelProtocol {
     public private(set) var title: String
     public private(set) var description: String
     public private(set) var contact: String
+    
+    func isFavourite() -> Bool {
+        guard let lecture = lecture as? Lecture else { return false }
+        return FavouriteService.currentFavourites().contains(lecture)
+    }
     
     required init(containing lecture: LectureProtocol) {
         self.lecture = lecture

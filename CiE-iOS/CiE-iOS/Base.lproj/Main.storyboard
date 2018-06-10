@@ -254,7 +254,7 @@
                                                 <rect key="frame" x="20" y="0.0" width="51" height="31"/>
                                                 <color key="onTintColor" red="1" green="0.044671976959999998" blue="0.094781849119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOZ-7M-ux0">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show User Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOZ-7M-ux0">
                                                 <rect key="frame" x="89" y="0.0" width="286" height="31"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="21"/>
                                                 <nil key="textColor"/>
@@ -290,13 +290,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wZe-sk-W7l">
                                                 <rect key="frame" x="0.0" y="77" width="375" height="36"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aggregated ECTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh2-vl-Dg6">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current ECTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh2-vl-Dg6">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
                                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-2t-ZpA">
+                                                    <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-2t-ZpA">
                                                         <rect key="frame" x="0.0" y="34" width="375" height="2"/>
                                                         <color key="tintColor" red="1" green="0.044671976959999998" blue="0.094781849119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </progressView>
@@ -386,8 +386,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourite" image="favourite" id="1p5-Oy-3Qz"/>
                     <connections>
+                        <outlet property="cieLabel" destination="oIL-Xd-QlB" id="OYv-9Y-qWg"/>
+                        <outlet property="cieProgress" destination="9Gk-1w-N4o" id="ndB-Dl-r5q"/>
                         <outlet property="detailsStackView" destination="0eB-qV-t2d" id="Ker-go-yav"/>
                         <outlet property="detailsSwitch" destination="STV-hk-W22" id="37A-Mp-rPE"/>
+                        <outlet property="ectsLabel" destination="gh2-vl-Dg6" id="LEd-jy-5a9"/>
+                        <outlet property="ectsProgress" destination="3Dw-2t-ZpA" id="WCn-pQ-JSE"/>
                         <outlet property="submitButton" destination="YEI-fh-Zxb" id="g4F-nH-uPd"/>
                         <outlet property="submitStackView" destination="omU-1k-59m" id="CSJ-G2-9jn"/>
                         <outlet property="warningLabel" destination="Z80-SM-WJq" id="vFt-Du-KUc"/>

@@ -9,76 +9,8 @@
 import Foundation
 import UIKit
 
-enum Department: Int {
-    case FK01 = 1, FK02, FK03, FK04, FK05, FK06, FK07, FK08, FK09, FK10, FK11, FK12, FK13
-}
-
-struct Room {
-    let floor: Floor
-    let number: Int
-    let building: Building
-    
-    func getNameRepresentation() -> String {
-        return "\(building.rawValue) \(floor.rawValue).\(number)"
-    }
-    
-    init(floor: Floor, number: Int, building: Building) {
-        self.floor = floor
-        self.number = number
-        self.building = building
-    }
-}
-
-enum Floor: Int {
-    case Basement = -1, GroundFloor, FirstFloor, SecondFloor, ThirdFloor, FourthFloor
-}
-
-enum Building: String {
-    case A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
-}
-
-enum ConflictIndicator: String {
-    case time = "Time"
-    case location = "Location"
-    case other = "Other"
-}
-
-struct FavouriteConflict {
-    let lectureA: Lecture
-    let lectureB: Lecture
-    let reason: ConflictIndicator
-    
-    init(between A: Lecture, and B: Lecture, becauseOf reason: ConflictIndicator) {
-        lectureA = A
-        lectureB = B
-        self.reason = reason
-    }
-    
-    func alertDescription() -> String {
-        return "\(reason.rawValue)-Conflicts between Lecture \(lectureA.title) and \(lectureB.title) detected."
-    }
-}
-
-struct LectureDate: Hashable {
-    static func == (lhs: LectureDate, rhs: LectureDate) -> Bool {
-        return lhs.date == rhs.date && rhs.room.getNameRepresentation() == lhs.room.getNameRepresentation()
-    }
-    
-    var hashValue: Int
-    
-    let room: Room
-    let date: Date
-    
-    init(room: Room, date: Date) {
-        self.room = room
-        self.date = date
-        self.hashValue = room.number * room.floor.rawValue / 7
-    }
-}
-
-
 struct FavouriteService {
-    static var currentFavourites: [Lecture] = { return favourites }()
+    static func currentFavourites() -> [Lecture] { return favourites }
     static private var favourites: [Lecture] = []
     
     static func add(_ lecture: Lecture) {
@@ -92,9 +24,113 @@ struct FavouriteService {
         }
     }
     
+    static func reset() {
+        favourites = []
+    }
+}
+
+struct UserStatsService {
+    private enum UserStatType{
+        case CiE
+        case ECTS
+    }
+    
+    static var currentLectures: [Lecture] = { return lectures }()
+    static var previousLectures: [Lecture] = { return prevLectures}()
+    static var allLectures: [Lecture] = {
+        var all = lectures
+        all.append(contentsOf: prevLectures)
+        return all
+    }()
+    
+    static func currentECTS() -> Int {
+        return getAmount(of: .ECTS, forCurrent: true)
+    }
+    static func currentCiE() -> Int {
+        return getAmount(of: .CiE, forCurrent: true)
+    }
+
+    static func previousECTS() -> Int {
+        return getAmount(of: .ECTS, forCurrent: false)
+    }
+    static func previousCiE() -> Int {
+        return getAmount(of: .CiE, forCurrent: false)
+    }
+
+    static func allECTS()  -> Int {
+        return UserStatsService.currentECTS() + UserStatsService.previousECTS()
+    }
+    static func allCiE()  -> Int {
+        return UserStatsService.currentCiE() + UserStatsService.previousCiE()
+    }
+    
+    static private var lectures: [Lecture] = []
+    static private var prevLectures: [Lecture] = []
+    
+    static func add(_ lecture: Lecture, forCurrentSemester current: Bool ) {
+        addTargeted(lecture, forCurrent: current)
+    }
+    
+    static func add(_ lectures: [Lecture], forCurrentSemester current: Bool) {
+        for lecture in lectures {
+            addTargeted(lecture, forCurrent: current)
+        }
+    }
+    
+    static func remove(_ lectures: [Lecture], forCurrentSemester current: Bool) {
+        for lecture in lectures {
+            removeTargeted(lecture, forCurrent: current)
+        }
+    }
+    
+    static func remove(_ lecture: Lecture, forCurrentSemester current: Bool) {
+        removeTargeted(lecture, forCurrent: current)
+    }
+    
+    private static func addTargeted(_ lecture: Lecture, forCurrent targetCurrent: Bool) {
+        let data = targetCurrent ? lectures : prevLectures
+        for alreadyAdded in data { guard alreadyAdded != lecture else { return } }
+        targetCurrent ? lectures.append(lecture) : prevLectures.append(lecture)
+    }
+    
+    private static func removeTargeted(_ lecture: Lecture, forCurrent targetCurrent: Bool) {
+        let data = targetCurrent ? lectures : prevLectures
+        for (index,alreadyAdded) in data.enumerated() {
+            if alreadyAdded == lecture {
+                _ = targetCurrent ? lectures.remove(at: index) : prevLectures.remove(at: index)
+            }
+        }
+    }
+    
+    private static func getAmount(of requestType: UserStatType, forCurrent current: Bool) -> Int {
+        var amount = 0
+        var addingFunction: (Lecture) -> Int
+        switch(requestType) {
+        case .CiE:
+            addingFunction = { lecture in
+                return (lecture.isCiE ?? false) ? 1 : 0
+            }
+        case .ECTS:
+            addingFunction = { lecture in
+                return lecture.ects ?? 0
+            }
+        }
+        let data = current ? lectures : prevLectures
+        for lecture in data {
+            amount += addingFunction(lecture)
+        }
+        return amount
+    }
+    
 }
 
 struct AlertService {
+    static func showInfo(titled title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        return alert
+    }
+    
     static func showConfirmAlert(
         titled title: String,
         withSubtitle subtitle: String,
@@ -120,4 +156,3 @@ struct AlertService {
         return myAlertController
     }
 }
-

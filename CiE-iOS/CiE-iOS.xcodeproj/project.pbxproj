@@ -26,6 +26,7 @@
 		61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB520A748990067DB14 /* TimeTableViewModel.swift */; };
 		61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB720A748F10067DB14 /* FavoritesViewModel.swift */; };
 		61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61574BB920A749410067DB14 /* SettingsViewModel.swift */; };
+		6163861920CD9B3700FF3694 /* SimpleObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163861820CD9B3700FF3694 /* SimpleObjects.swift */; };
 		61674B0520C9A05B00B631E2 /* LectureDetailPage01Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61674B0420C9A05B00B631E2 /* LectureDetailPage01Controller.swift */; };
 		61870DF320CD7A490076DF1E /* LectureDetailViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61870DF220CD7A490076DF1E /* LectureDetailViewModelMock.swift */; };
 		61870DF520CD7A6B0076DF1E /* FavoritesViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61870DF420CD7A6B0076DF1E /* FavoritesViewModelMock.swift */; };
@@ -82,6 +83,7 @@
 		61574BB520A748990067DB14 /* TimeTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewModel.swift; sourceTree = "<group>"; };
 		61574BB720A748F10067DB14 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		61574BB920A749410067DB14 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		6163861820CD9B3700FF3694 /* SimpleObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleObjects.swift; sourceTree = "<group>"; };
 		61674B0420C9A05B00B631E2 /* LectureDetailPage01Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage01Controller.swift; sourceTree = "<group>"; };
 		61870DF220CD7A490076DF1E /* LectureDetailViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewModelMock.swift; sourceTree = "<group>"; };
 		61870DF420CD7A6B0076DF1E /* FavoritesViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelMock.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				6121A4B820B84587006D7660 /* Lecture.swift */,
 				6121A4BA20B84DE8006D7660 /* Services.swift */,
 				6121A4BC20B85A12006D7660 /* Professor.swift */,
+				6163861820CD9B3700FF3694 /* SimpleObjects.swift */,
 			);
 			path = ObjectModels;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				61574B2F20A740630067DB14 /* MapViewController.swift in Sources */,
 				61674B0520C9A05B00B631E2 /* LectureDetailPage01Controller.swift in Sources */,
 				6121A4BD20B85A12006D7660 /* Professor.swift in Sources */,
+				6163861920CD9B3700FF3694 /* SimpleObjects.swift in Sources */,
 				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
 				61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */,

@@ -15,9 +15,14 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var detailsSwitch: UISwitch!
     @IBOutlet weak var detailsStackView: UIStackView!
+    @IBOutlet weak var ectsProgress: UIProgressView!
+    @IBOutlet weak var ectsLabel: UILabel!
+    @IBOutlet weak var cieLabel: UILabel!
+    @IBOutlet weak var cieProgress: UIProgressView!
     
     private var model: FavoritesViewModelProtocol?
     private let warningText = "Time conflicts detected!"
+    private let amountNeededForCertificate:Int = 7
     private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -50,11 +55,29 @@ class FavoritesViewController: UIViewController {
         warningLabel.isHidden = true
         
         pinBackground(backgroundView, to: submitStackView)
+        updateUserStats()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        model?.update()
+        setUpStyling()
     }
     
     private func setUpBinding() {
-        submitButton.addTarget(self, action: #selector(showAlertIfConflicting), for: UIControlEvents.touchUpInside)
+        submitButton.addTarget(self, action: #selector(confirmTapped), for: UIControlEvents.touchUpInside)
         detailsSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: UIControlEvents.valueChanged)
+    }
+    
+    func updateUserStats() {
+        guard let model = model else { return }
+        let allECTS = model.allECTS
+        ectsLabel.text = "Your ECTS: \(allECTS) out of 10"
+        ectsProgress.setProgress(Float(allECTS)/10, animated: (allECTS != 0))
+        
+        let allCiE = model.allCiE
+        cieLabel.text = "Your CiE : \(allCiE) out of \(amountNeededForCertificate)"
+        cieProgress.setProgress(Float(allCiE)/Float(amountNeededForCertificate), animated: (allCiE != 0))
+        
     }
     
     @objc
@@ -62,24 +85,58 @@ class FavoritesViewController: UIViewController {
         UIView.animate(withDuration: 0.2) {
             self.detailsStackView.isHidden = !sender.isOn
             self.warningLabel.isHidden = !sender.isOn
+            if sender.isOn { self.updateUserStats() }
         }
     }
     
     @objc
-    func showAlertIfConflicting() {
-        guard let needsAlert = model?.hasConflicts, let conflict = model?.conflictForAlert else { return }
-        guard needsAlert else { return }
-        let myAlertController = AlertService.showConfirmAlert(
-            titled: "Conflict!",
-            withSubtitle: "\(conflict.alertDescription()) Are you sure you want to submit your selection?",
-            onCancel: { UIAlertAction -> Void in
-                print("aborted")
-            },
-            onConfirm: { UIAlertAction -> Void in
-                print("confirmed")
-            }
-        )
+    func confirmTapped() {
+        addFavourtiesToSemesterWithAlert()
+    }
+    
+    func showInfo(titled title: String, saying message: String) {
+        let myAlertController = AlertService.showInfo(titled: title, message: message)
         self.present(myAlertController, animated: true, completion: nil)
+    }
+    
+    func addFavourtiesToSemesterWithAlert() {
+        guard let favourites = model?.favourites, !favourites.isEmpty else {
+            showInfo(titled: "Nothing here.", saying: "You need to add some favourites first.")
+            return
+        }
+        guard let needsAlert = model?.hasConflicts else { return }
+        let submit: (UIAlertAction) -> Void = { UIAlertAction -> Void in
+            self.confirmedSubmit()
+        }
+        let cancel: (UIAlertAction) -> Void = { UIAlertAction -> Void in
+            self.showInfo(titled: "Aborted!", saying: "You did NOT submit your favourites.")
+        }
+        if needsAlert {
+            let conflictDescription = model?.conflictForAlert?.alertDescription() ?? ConflictIndicator.generalDescription(.other)
+            let myAlertController = AlertService.showConfirmAlert(
+                titled: "Conflict!",
+                withSubtitle: "\(conflictDescription) Are you sure you want to submit your selection?",
+                onCancel: cancel,
+                onConfirm: submit
+            )
+            self.present(myAlertController, animated: true, completion: nil)
+        } else {
+            let myAlertController = AlertService.showConfirmAlert(
+                titled: "Confirm!",
+                withSubtitle: "Please confirm that you want to enroll in these courses.",
+                onCancel: cancel,
+                onConfirm: submit
+            )
+            self.present(myAlertController, animated: true, completion: nil)
+        }
+    }
+    
+    func confirmedSubmit() {
+        guard let model = self.model else { return }
+        model.addFavourites()
+        model.clearFavourites()
+        model.update()
+        self.updateUserStats()
     }
     
     private func pinBackground(_ view: UIView, to stackView: UIStackView) {
