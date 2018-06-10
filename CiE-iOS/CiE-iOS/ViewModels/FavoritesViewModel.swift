@@ -7,9 +7,25 @@
 //
 
 protocol FavoritesViewModelProtocol {
-    
+    var hasConflicts: Bool { get }
+    var favourites: [LectureProtocol] { get }
+    var conflictForAlert: FavouriteConflict? { get }
 }
 
 class FavoritesViewModel: FavoritesViewModelProtocol {
+    public var hasConflicts: Bool {
+        return conflictForAlert != nil
+    }
+    public var favourites: [LectureProtocol] {
+        return FavouriteService.currentFavourites
+    }
+    public private(set) var conflictForAlert: FavouriteConflict?
     
+    init() {
+        conflictForAlert = FavouriteConflict(
+            between: Lecture(withTitle: "A", heldBy: Professor()),
+            and: Lecture(withTitle: "B", heldBy: Professor()),
+            becauseOf: .time
+        )
+    }
 }

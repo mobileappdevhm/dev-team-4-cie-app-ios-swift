@@ -25,13 +25,14 @@ class LectureDetailPage03Controller: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let prof = Professor()
+        prof.email = "socher@hm.edu"
+        prof.name = "Socher"
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",
-                heldBy: Professor()
+                heldBy: prof
             ))
-        model?.lecture.professor.email = "socher@hm.edu"
-        model?.lecture.professor.name = "Socher"
         setUpStyling()
         setUpBinding()
     }
@@ -87,7 +88,7 @@ class LectureDetailPage03Controller: UIViewController{
 
     
     private func moveToFavourites(usingID id: UUID) {
-        guard let lecture = model?.lecture else { return }
+        guard let lecture = model?.lecture as? Lecture else { return }
         addFavouriteDoesAdd ? FavouriteService.add(lecture) : FavouriteService.remove(lecture)
     }
     

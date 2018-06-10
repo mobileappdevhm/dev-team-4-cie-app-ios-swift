@@ -7,8 +7,8 @@
 //
 
 protocol LectureDetailViewModelProtocol {
-    init(containing: Lecture)
-    var lecture: Lecture { get }
+    init(containing: LectureProtocol)
+    var lecture: LectureProtocol { get }
     var title: String { get }
     var description: String { get }
     var contact: String { get }
@@ -16,17 +16,15 @@ protocol LectureDetailViewModelProtocol {
 }
 
 class LectureDetailViewModel: LectureDetailViewModelProtocol {
-    
-    public private(set) var lecture: Lecture
+    public private(set) var lecture: LectureProtocol
     public private(set) var title: String
     public private(set) var description: String
     public private(set) var contact: String
     
-    required init(containing lecture: Lecture) {
+    required init(containing lecture: LectureProtocol) {
         self.lecture = lecture
         title = lecture.title
         description = lecture.description
-//        contact = lecture.professor
         contact = "email"
     }
     
