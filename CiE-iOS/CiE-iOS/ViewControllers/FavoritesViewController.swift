@@ -64,7 +64,7 @@ class FavoritesViewController: UIViewController {
     }
     
     private func setUpBinding() {
-        submitButton.addTarget(self, action: #selector(confirmTapped), for: UIControlEvents.touchUpInside)
+        submitButton.addTarget(self, action: #selector(addFavourtiesToSemesterWithAlert), for: UIControlEvents.touchUpInside)
         detailsSwitch.addTarget(self, action: #selector(switchChanged(sender:)), for: UIControlEvents.valueChanged)
     }
     
@@ -99,7 +99,7 @@ class FavoritesViewController: UIViewController {
         self.present(myAlertController, animated: true, completion: nil)
     }
     
-    func addFavourtiesToSemesterWithAlert() {
+    @objc func addFavourtiesToSemesterWithAlert() {
         guard let favourites = model?.favourites, !favourites.isEmpty else {
             showInfo(titled: "Nothing here.", saying: "You need to add some favourites first.")
             return
