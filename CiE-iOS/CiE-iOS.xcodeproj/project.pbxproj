@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355FADD120CE8E2900C777C4 /* MyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355FADD020CE8E2900C777C4 /* MyTableCell.swift */; };
 		6121A4B920B84587006D7660 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4B820B84587006D7660 /* Lecture.swift */; };
 		6121A4BB20B84DE8006D7660 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4BA20B84DE8006D7660 /* Services.swift */; };
 		6121A4BD20B85A12006D7660 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4BC20B85A12006D7660 /* Professor.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		355FADD020CE8E2900C777C4 /* MyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableCell.swift; sourceTree = "<group>"; };
 		6121A4B820B84587006D7660 /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		6121A4BA20B84DE8006D7660 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		6121A4BC20B85A12006D7660 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				61574B0120A739000067DB14 /* Main.storyboard */,
 				61574B0420A739010067DB14 /* Assets.xcassets */,
 				61574B0920A739010067DB14 /* Info.plist */,
+				355FADD020CE8E2900C777C4 /* MyTableCell.swift */,
 			);
 			path = "CiE-iOS";
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				6121A4B920B84587006D7660 /* Lecture.swift in Sources */,
 				61574BB420A748620067DB14 /* MapViewModel.swift in Sources */,
 				61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */,
+				355FADD120CE8E2900C777C4 /* MyTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
