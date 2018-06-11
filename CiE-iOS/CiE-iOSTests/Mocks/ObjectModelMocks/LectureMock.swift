@@ -19,7 +19,7 @@ class LectureMock: LectureProtocol {
     var lectureDates: Set<LectureDate> { return injectedLectureDates }
     var ects: Int? { return injectedECTS }
     var isCiE: Bool? { return injectedIsCiE }
-    var professor: Professor
+    var professor: ProfessorProtocol = Professor()
     var isSetUp: Bool { return injectedIsSetUp }
 
     var injectedUUID: UUID = UUID()
@@ -33,7 +33,7 @@ class LectureMock: LectureProtocol {
     
     init() { self.professor = Professor() }
     
-    required convenience init(withTitle: String, heldBy: Professor) { self.init() }
+    required convenience init(withTitle: String, heldBy: ProfessorProtocol) { self.init() }
     
     func setECTS(to: Int) {}
     func setToCiE() {}

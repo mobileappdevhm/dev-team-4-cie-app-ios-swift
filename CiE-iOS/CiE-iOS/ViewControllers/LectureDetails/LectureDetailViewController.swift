@@ -31,13 +31,13 @@ class LectureDetailViewController: UIViewController{
     private func setUpBindings() {
         let close = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeView))
         close.tintColor = UIColor.red
-        detailsNavigation.rightBarButtonItems = [close]    }
+        detailsNavigation.leftBarButtonItems = [close]
+    }
     
     @objc
     func closeView() {
         self.dismiss(animated: true, completion: nil)
     }
-    
     private func setUpDetails() {
         guard let detailModel = detailModel else { return }
         titleLabel.text = detailModel.title

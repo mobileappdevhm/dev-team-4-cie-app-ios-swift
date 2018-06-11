@@ -14,24 +14,27 @@ class LectureDetailPage03Controller: UIViewController{
     
     @IBOutlet weak var favourite: UIImageView!
     @IBOutlet weak var email: UIImageView!
-    private let emptyFavourties = UIImage(named: "favourite_border")?.withRenderingMode(.alwaysTemplate)
+    private let emptyFavourites = UIImage(named: "favourite_border")?.withRenderingMode(.alwaysTemplate)
     private let filledFavourites = UIImage(named: "favourite")?.withRenderingMode(.alwaysTemplate)
     private var addFavouriteImage: UIImage? {
-        return (addFavouriteDoesAdd ? emptyFavourties : filledFavourites)
+        return (addFavouriteDoesAdd ?? true ? emptyFavourites : filledFavourites)
     }
     private let addContactImage: UIImage? = UIImage(named: "settings_email")?.withRenderingMode(.alwaysTemplate)
-    private var addFavouriteDoesAdd = true
+    private var addFavouriteDoesAdd:Bool?
     var model: LectureDetailViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let prof = Professor()
+        prof.email = "socher@hm.edu"
+        prof.name = "Socher"
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",
-                heldBy: Professor()
+                heldBy: prof
             ))
-        model?.lecture.professor.email = "socher@hm.edu"
-        model?.lecture.professor.name = "Socher"
+        model?.lecture.setECTS(to: 2)
+        addFavouriteDoesAdd = !(model?.isFavourite() ?? false)
         setUpStyling()
         setUpBinding()
     }
@@ -57,9 +60,9 @@ class LectureDetailPage03Controller: UIViewController{
     
     @objc
     func addToFavourite(tapGestureRecognizer recon: UITapGestureRecognizer) {
-        guard let id = model?.lecture.id else { return }
-        moveToFavourites(usingID: id)
-        addFavouriteDoesAdd = !addFavouriteDoesAdd
+        guard let lecture = model?.lecture, let adding = addFavouriteDoesAdd else { return }
+        moveToFavourites(lecture as? Lecture)
+        addFavouriteDoesAdd = !adding
         favourite.image = addFavouriteImage
     }
     
@@ -86,9 +89,9 @@ class LectureDetailPage03Controller: UIViewController{
     }
 
     
-    private func moveToFavourites(usingID id: UUID) {
-        guard let lecture = model?.lecture else { return }
-        addFavouriteDoesAdd ? FavouriteService.add(lecture) : FavouriteService.remove(lecture)
+    private func moveToFavourites(_ lecture: Lecture?) {
+        guard let lecture = lecture, let adding = addFavouriteDoesAdd else { return }
+        adding ? FavouriteService.add(lecture) : FavouriteService.remove(lecture)
     }
     
     private func openEmail(withTarget email: String, adressing name: String) {

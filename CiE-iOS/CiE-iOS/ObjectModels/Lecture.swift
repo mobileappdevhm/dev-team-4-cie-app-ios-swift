@@ -15,11 +15,11 @@ protocol LectureProtocol {
     var lectureDates: Set<LectureDate> { get }
     var ects: Int? { get }
     var isCiE: Bool? { get }
-    var professor: Professor { get set }
+    var professor: ProfessorProtocol { get set }
     var isSetUp: Bool { get }
     var description: String { get }
     
-    init(withTitle: String, heldBy: Professor)
+    init(withTitle: String, heldBy: ProfessorProtocol)
     
     func setECTS(to: Int)
     func setToCiE()
@@ -42,7 +42,7 @@ class Lecture: LectureProtocol,Equatable {
     public private(set) var isCiE: Bool?
     public private(set) var description: String
     
-    var professor: Professor
+    var professor: ProfessorProtocol
     var isSetUp: Bool {
         return !connectedDepartments.isEmpty
             && !lectureDates.isEmpty
@@ -50,7 +50,7 @@ class Lecture: LectureProtocol,Equatable {
             && isCiE != nil
     }
     
-    required init(withTitle title: String, heldBy professor: Professor) {
+    required init(withTitle title: String, heldBy professor: ProfessorProtocol) {
         self.title = title
         self.professor = professor
         id = UUID()
