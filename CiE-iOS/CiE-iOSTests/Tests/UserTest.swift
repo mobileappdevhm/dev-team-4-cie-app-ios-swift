@@ -30,34 +30,34 @@ class UserTest: XCTestCase {
     //     XCTAssert(bool)
     //}
     
-    func test_name_userHasBeenInitialized_userStoredName() {
+    func test_Name_UserHasBeenInitialized_UserStoredName() {
         XCTAssertEqual(sut?.name, initName)
     }
     
-    func test_password_userHasBeenInitialized_userStoredPassword() {
+    func test_Password_UserHasBeenInitialized_UserStoredPassword() {
         XCTAssertEqual(sut?.password, initPassword)
     }
     
-    func test_departments_userHasBeenInitialized_noDepartments() {
+    func test_Departments_UserHasBeenInitialized_NoDepartments() {
         XCTAssertEqual(sut?.departments, [])
     }
 
-    func test_exchangeStudentIndicator_hasNoValueExplicitlySet_ReturnsFalse() {
+    func test_ExchangeStudentIndicator_HasNoValueExplicitlySet_ReturnsFalse() {
         XCTAssertFalse(sut?.isExchange ?? true)
     }
     
-    func test_exchangeStudentIndicator_becameExchangeStudent_ReturnsTrue() {
+    func test_ExchangeStudentIndicator_BecameExchangeStudent_ReturnsTrue() {
         sut?.becomeExchangeStudent()
         XCTAssert(sut?.isExchange ?? false)
     }
     
-    func test_departments_userHasBeenGivenDepartmentsAsArray_departmentsThatWereGiven() {
+    func test_Departments_UserHasBeenGivenDepartmentsAsArray_DepartmentsThatWereGiven() {
         let givenArray: [Department] = [.FK01, .FK02]
         sut?.assignDepartments(givenArray)
         XCTAssertEqual(Set(givenArray),sut?.departments)
     }
     
-    func test_departments_userHasBeenGivenDepartmentsAsSet_departmentsThatWereGiven() {
+    func test_Departments_UserHasBeenGivenDepartmentsAsSet_DepartmentsThatWereGiven() {
         var departmentSet = Set<Department>()
         departmentSet.update(with: .FK01)
         departmentSet.update(with: .FK02)

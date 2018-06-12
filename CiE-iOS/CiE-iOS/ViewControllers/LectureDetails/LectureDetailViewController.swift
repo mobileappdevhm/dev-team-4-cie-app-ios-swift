@@ -22,7 +22,8 @@ class LectureDetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailModel = LectureDetailViewModel(containing: Lecture(withTitle: "Test Title", heldBy: Professor()))
+        detailModel = LectureDetailViewModel(containing: Lecture(withTitle: "Test Title", heldBy: Professor(
+        withName: "Socher")))
         setUpDetails()
         setUpBindings()
     }
