@@ -10,6 +10,10 @@ import Foundation
 
 enum Department: Int {
     case FK01 = 1, FK02, FK03, FK04, FK05, FK06, FK07, FK08, FK09, FK10, FK11, FK12, FK13
+    
+    func getString() -> String {
+        return self.rawValue < 10 ? "FK0\(self.rawValue)" : "FK\(self.rawValue)"
+    }
 }
 
 struct Room {
