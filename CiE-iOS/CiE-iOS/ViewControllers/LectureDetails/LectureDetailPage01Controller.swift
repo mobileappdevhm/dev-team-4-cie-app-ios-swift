@@ -22,6 +22,7 @@ class LectureDetailPage01Controller: UIViewController{
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",
+                withDescription: nil,
                 heldBy: prof
         ))
         setUpStyling()

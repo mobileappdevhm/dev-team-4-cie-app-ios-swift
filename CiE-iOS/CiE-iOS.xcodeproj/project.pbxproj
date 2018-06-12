@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		359FD73820BEAF0A004D95B4 /* ProfessorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359FD73720BEAF0A004D95B4 /* ProfessorTest.swift */; };
 		359FD73A20BF3D4C004D95B4 /* ProfessorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359FD73920BF3D4C004D95B4 /* ProfessorMock.swift */; };
+		610F08DA20D0036D00754D98 /* LectureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610F08D920D0036D00754D98 /* LectureTableViewCell.swift */; };
 		6121A4B920B84587006D7660 /* Lecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4B820B84587006D7660 /* Lecture.swift */; };
 		6121A4BB20B84DE8006D7660 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4BA20B84DE8006D7660 /* Services.swift */; };
 		6121A4BD20B85A12006D7660 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6121A4BC20B85A12006D7660 /* Professor.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		359FD73720BEAF0A004D95B4 /* ProfessorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorTest.swift; sourceTree = "<group>"; };
 		359FD73920BF3D4C004D95B4 /* ProfessorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorMock.swift; sourceTree = "<group>"; };
+		610F08D920D0036D00754D98 /* LectureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureTableViewCell.swift; sourceTree = "<group>"; };
 		6121A4B820B84587006D7660 /* Lecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lecture.swift; sourceTree = "<group>"; };
 		6121A4BA20B84DE8006D7660 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		6121A4BC20B85A12006D7660 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				61574B0120A739000067DB14 /* Main.storyboard */,
 				61574B0420A739010067DB14 /* Assets.xcassets */,
 				61574B0920A739010067DB14 /* Info.plist */,
+				610F08D920D0036D00754D98 /* LectureTableViewCell.swift */,
 			);
 			path = "CiE-iOS";
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
 				61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */,
 				618C38EA20AEF2B900B5C6FB /* User.swift in Sources */,
+				610F08DA20D0036D00754D98 /* LectureTableViewCell.swift in Sources */,
 				61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */,
 				61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */,
 				6121A4B920B84587006D7660 /* Lecture.swift in Sources */,

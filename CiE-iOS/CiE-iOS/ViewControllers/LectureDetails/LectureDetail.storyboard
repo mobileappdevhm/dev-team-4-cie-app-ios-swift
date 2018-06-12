@@ -14,7 +14,7 @@
         <!--Lecture Detail View Controller-->
         <scene sceneID="sPK-XW-KiH">
             <objects>
-                <viewController id="Fus-F2-EJS" customClass="LectureDetailViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fus-F2-EJS" customClass="LectureDetailViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="izW-b2-PnJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,33 +22,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="y68-Q2-gN1">
                                 <rect key="frame" x="0.0" y="20" width="375" height="617"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Oo-sJ-rw3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Yn7-gD-03D"/>
-                                        </constraints>
-                                        <items>
-                                            <navigationItem title="Details" id="gPV-zY-Oih">
-                                                <barButtonItem key="leftBarButtonItem" id="KQq-Ul-0DZ">
-                                                    <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mQj-bM-YXB">
-                                                        <rect key="frame" x="16" y="7" width="83" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Close">
-                                                            <color key="titleColor" red="1" green="0.044671976959999998" blue="0.094781849119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="eTZ-rV-Dxe">
-                                        <rect key="frame" x="0.0" y="53" width="375" height="564"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rmA-5f-3E0">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="67"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRU-HG-yBG">
-                                                        <rect key="frame" x="159.5" y="9.5" width="56.5" height="48"/>
+                                                        <rect key="frame" x="159.5" y="36" width="56.5" height="48"/>
                                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="35"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -61,7 +42,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9v5-0J-shc">
-                                                <rect key="frame" x="0.0" y="82" width="375" height="210"/>
+                                                <rect key="frame" x="0.0" y="135" width="375" height="210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="210" id="BG2-lA-obv"/>
                                                 </constraints>
@@ -70,7 +51,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcF-KD-6GO">
-                                                <rect key="frame" x="0.0" y="307" width="375" height="257"/>
+                                                <rect key="frame" x="0.0" y="360" width="375" height="257"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="257" id="MBs-GU-zJu"/>
                                                 </constraints>
@@ -112,7 +93,6 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="9v5-0J-shc" id="rG4-fZ-Pdy"/>
                         <outlet property="detailBodyStack" destination="eTZ-rV-Dxe" id="X0j-77-Hmg"/>
-                        <outlet property="detailsNavigation" destination="gPV-zY-Oih" id="tvT-zA-wDL"/>
                         <outlet property="infoStack" destination="eTZ-rV-Dxe" id="IAV-c8-kxF"/>
                         <outlet property="pageControl" destination="txW-4W-4bI" id="YrA-lz-vDA"/>
                         <outlet property="titleLabel" destination="lRU-HG-yBG" id="7kB-jU-di9"/>

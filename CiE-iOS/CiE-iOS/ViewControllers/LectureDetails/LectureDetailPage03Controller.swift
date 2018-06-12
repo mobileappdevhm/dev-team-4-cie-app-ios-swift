@@ -30,6 +30,7 @@ class LectureDetailPage03Controller: UIViewController{
         model = LectureDetailViewModel(containing:
             Lecture(
                 withTitle: "Mobile Anwendungen",
+                withDescription: nil,
                 heldBy: prof
             ))
         model?.lecture.setECTS(to: 2)
