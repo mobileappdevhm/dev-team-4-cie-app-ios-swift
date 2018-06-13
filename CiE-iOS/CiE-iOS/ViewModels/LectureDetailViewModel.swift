@@ -11,7 +11,7 @@ protocol LectureDetailViewModelProtocol {
     var lecture: LectureProtocol { get }
     var title: String { get }
     var description: String { get }
-    var contact: String { get }
+    var contact: String? { get }
     
     func isFavourite() -> Bool
 }
@@ -20,7 +20,7 @@ class LectureDetailViewModel: LectureDetailViewModelProtocol {
     public private(set) var lecture: LectureProtocol
     public private(set) var title: String
     public private(set) var description: String
-    public private(set) var contact: String
+    public private(set) var contact: String?
     
     func isFavourite() -> Bool {
         guard let lecture = lecture as? Lecture else { return false }
@@ -31,7 +31,7 @@ class LectureDetailViewModel: LectureDetailViewModelProtocol {
         self.lecture = lecture
         title = lecture.title
         description = lecture.description
-        contact = "email"
+        contact = lecture.professor.email
     }
     
     

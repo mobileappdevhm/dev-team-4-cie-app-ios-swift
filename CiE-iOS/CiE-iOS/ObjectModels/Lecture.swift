@@ -19,7 +19,7 @@ protocol LectureProtocol {
     var isSetUp: Bool { get }
     var description: String { get }
     
-    init(withTitle: String, heldBy: ProfessorProtocol)
+    init(withTitle: String, withDescription: String?, heldBy: ProfessorProtocol)
     
     func setECTS(to: Int)
     func setToCiE()
@@ -50,11 +50,11 @@ class Lecture: LectureProtocol,Equatable {
             && isCiE != nil
     }
     
-    required init(withTitle title: String, heldBy professor: ProfessorProtocol) {
+    required init(withTitle title: String, withDescription description: String?, heldBy professor: ProfessorProtocol) {
         self.title = title
         self.professor = professor
         id = UUID()
-        self.description = "dummy description that actually is pretty long so you do not feel like its fake or anything. This just shows how much can be written here."
+        self.description = description ?? "No description was provided."
     }
     
     func setECTS(to ects: Int) {

@@ -12,7 +12,7 @@ protocol FavoritesViewModelProtocol {
     var conflictForAlert: FavouriteConflict? { get }
     var allECTS: Int { get }
     var allCiE: Int { get }
-    
+    var impact: Impact { get }
     func addFavourites()
     func clearFavourites()
     func update()
@@ -26,6 +26,7 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
     public private(set) var conflictForAlert: FavouriteConflict?
     public var allECTS: Int { return UserStatsService.allECTS() }
     public var allCiE: Int { return UserStatsService.allCiE() }
+    public var impact: Impact { return FavouriteService.calculateImpact() }
     public func addFavourites() {
         UserStatsService.add(FavouriteService.currentFavourites(), forCurrentSemester: true)
     }

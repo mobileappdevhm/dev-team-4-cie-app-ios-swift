@@ -18,6 +18,16 @@ struct FavouriteService {
         favourites.append(lecture)
     }
     
+    static func calculateImpact() -> Impact {
+        var ects = 0
+        var cie = 0
+        for favourite in favourites {
+            cie += favourite.isCiE ?? false ? 1 : 0
+            ects += favourite.ects ?? 0
+        }
+        return Impact(changingEctsBy: ects, changingCiEBy: cie)
+    }
+    
     static func remove(_ lecture: Lecture) {
         for (index,favourite) in favourites.enumerated() {
             if favourite == lecture { favourites.remove(at: index) }

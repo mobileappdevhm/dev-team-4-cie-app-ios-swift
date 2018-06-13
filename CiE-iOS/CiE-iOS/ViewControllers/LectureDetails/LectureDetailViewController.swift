@@ -15,30 +15,19 @@ class LectureDetailViewController: UIViewController{
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var detailsNavigation: UINavigationItem!
     @IBOutlet weak var infoStack: UIStackView!
     private var detailModel: LectureDetailViewModelProtocol?
     var detailCompartments: [UIView]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailModel = LectureDetailViewModel(containing: Lecture(withTitle: "Test Title", heldBy: Professor(
-        withName: "Socher")))
+        detailModel = LectureDetailViewModel(containing: Lecture(
+            withTitle: "Test Title",
+            withDescription: nil,
+            heldBy: Professor(withName: "Socher")))
         setUpDetails()
-        setUpBindings()
     }
     
-    
-    private func setUpBindings() {
-        let close = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(closeView))
-        close.tintColor = UIColor.red
-        detailsNavigation.leftBarButtonItems = [close]
-    }
-    
-    @objc
-    func closeView() {
-        self.dismiss(animated: true, completion: nil)
-    }
     private func setUpDetails() {
         guard let detailModel = detailModel else { return }
         titleLabel.text = detailModel.title
@@ -49,6 +38,10 @@ class LectureDetailViewController: UIViewController{
         descriptionLabel.trailingAnchor.constraint(equalTo: detailBodyStack.trailingAnchor).isActive = true
         descriptionLabel.numberOfLines = 0
         detailCompartments = [titleLabel, descriptionLabel]
+    }
+    
+    func setLecture(to lecture: Lecture) {
+        detailModel = LectureDetailViewModel(containing: lecture)
     }
     
 }
