@@ -57,6 +57,15 @@ struct LectureDate: Hashable {
     }
 }
 
+struct Impact {
+    let ects: Int
+    let cie: Int
+    init(changingEctsBy ects: Int, changingCiEBy cie: Int) {
+        self.ects = ects
+        self.cie = cie
+    }
+}
+
 enum ConflictIndicator: String {
     case time = "Time"
     case location = "Location"

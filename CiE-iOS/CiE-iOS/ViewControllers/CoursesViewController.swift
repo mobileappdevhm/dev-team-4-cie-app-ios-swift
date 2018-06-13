@@ -24,9 +24,11 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateLectureCatalog()
+        tableView.reloadData()
     }
     
     private func updateLectureCatalog() {
+        guard lectures == nil else { return }
         lectures = [
             Lecture(withTitle: "Mobile Anwendungen",
                     withDescription: nil,

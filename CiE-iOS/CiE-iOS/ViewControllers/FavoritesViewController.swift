@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController {
+class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var submitStackView: UIStackView!
     @IBOutlet weak var submitButton: UIButton!
@@ -19,7 +19,9 @@ class FavoritesViewController: UIViewController {
     @IBOutlet weak var ectsLabel: UILabel!
     @IBOutlet weak var cieLabel: UILabel!
     @IBOutlet weak var cieProgress: UIProgressView!
+    @IBOutlet weak var tableView: UITableView!
     
+    private var favourites:[Lecture]?
     private var model: FavoritesViewModelProtocol?
     private let warningText = "Time conflicts detected!"
     private let amountNeededForCertificate:Int = 7
@@ -34,12 +36,66 @@ class FavoritesViewController: UIViewController {
         model = FavoritesViewModel()
         setUpStyling()
         setUpBinding()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favourites = FavouriteService.currentFavourites()
+        tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = favourites?.count ?? 0
+        let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: view.bounds.size.width))
+        emptyLabel.text = "Currently you do not have any favourites."
+        emptyLabel.textAlignment = NSTextAlignment.center
+        tableView.backgroundView = emptyLabel
+        emptyLabel.isHidden = count != 0
+        tableView.separatorStyle = emptyLabel.isHidden ? .singleLine : .none
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let favourites = favourites else { return }
+            FavouriteService.remove(favourites[indexPath.row])
+            self.favourites = FavouriteService.currentFavourites()
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .right)
+            tableView.endUpdates()
+            tableView.reloadData()
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let favourites = favourites else { return }
+        let storyboard = UIStoryboard(name: "LectureDetail", bundle: Bundle.main)
+        let detailView: LectureDetailViewController = (storyboard.instantiateViewController(withIdentifier: "detail")) as! LectureDetailViewController
+        detailView.setLecture(to: favourites[indexPath.row])
+        navigationController?.show(detailView,sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteLectureCell") as! FavouriteLectureCell
+        guard let favourites = favourites else {
+            return cell.map(to: Lecture(withTitle: "Dummy",
+                                        withDescription: nil,
+                                        heldBy: Professor(withName: "Dummy Prof")))
+        }
+        return cell.map(to: favourites[indexPath.row])
+    }
+    
+
     private func setUpStyling() {
         submitButton.backgroundColor = UIColor.red.withAlphaComponent(0.8)
         submitButton.layer.cornerRadius = 5
@@ -70,13 +126,13 @@ class FavoritesViewController: UIViewController {
     
     func updateUserStats() {
         guard let model = model else { return }
-        let allECTS = model.allECTS
-        ectsLabel.text = "Your ECTS: \(allECTS) out of 10"
-        ectsProgress.setProgress(Float(allECTS)/10, animated: (allECTS != 0))
+        let ects = model.impact.ects
+        ectsLabel.text = "Your ECTS raise by \(ects)"
+        ectsProgress.setProgress(Float(ects)/10, animated: (ects != 0))
         
-        let allCiE = model.allCiE
-        cieLabel.text = "Your CiE : \(allCiE) out of \(amountNeededForCertificate)"
-        cieProgress.setProgress(Float(allCiE)/Float(amountNeededForCertificate), animated: (allCiE != 0))
+        let cie = model.impact.cie
+        cieLabel.text = "Your CiE raise by \(cie)"
+        cieProgress.setProgress(Float(cie)/Float(amountNeededForCertificate), animated: (cie != 0))
         
     }
     
@@ -136,7 +192,10 @@ class FavoritesViewController: UIViewController {
         model.addFavourites()
         model.clearFavourites()
         model.update()
-        self.updateUserStats()
+        updateUserStats()
+        present(AlertService.showInfo(titled: "Success!", message: "Your favourites have been added."), animated: true, completion: nil)
+        favourites = FavouriteService.currentFavourites()
+        tableView.reloadData()
     }
     
     private func pinBackground(_ view: UIView, to stackView: UIStackView) {
