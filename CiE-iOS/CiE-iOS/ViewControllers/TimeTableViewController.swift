@@ -11,27 +11,26 @@ import Foundation
 
 class TimeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //protocol functions
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timetables.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimetableCell") as? TimetableCell else
-        { return UITableViewCell() }
-        cell.courseLabel.text = timetables[indexPath.row].course
-        cell.timeLabel.text = timetables[indexPath.row].time
-        cell.roomLabel.text = timetables[indexPath.row].room
-        cell.campusLabel.text = timetables[indexPath.row].campus
-        
-        return cell
-    }
-    
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var timetableTableView: UITableView!
+    @IBOutlet weak var dayLabel: UILabel!
     
     let picker = UIDatePicker()
     final let url = URL(string: "https://api.myjson.com/bins/m1zpy")
     private var timetables = [Timetable]()
+    
+    //MARK - protocol functions
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return timetables.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TimetableCell") as! TimetableCell
+        return cell.map(to: timetables[indexPath.row])
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +38,7 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
         downloadJSON()
+        dayLabel.text = "Timetable"
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,12 +73,17 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let dateString = formatter.string(from: picker.date)
         
         dateField.text = "\(dateString)"
+        isWeekday(today: dateString)
         self.view.endEditing(true)
     }
     
-    //sort date entered
-  
-    
+    //check date entered
+    func isWeekday(today: String){
+        if today.range(of: "Monday") != nil {
+            print("exist!")
+        }
+    }
+
     //download data from json
     func downloadJSON(){
         guard let downloadURL = url else { return }

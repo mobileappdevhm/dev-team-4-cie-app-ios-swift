@@ -30,4 +30,8 @@ class Timetable: Codable {
         self.campus = campus
         self.day = day
     }
+    
+    func getRoomStringRepresentation() -> String {
+        return room 
+    }
 }

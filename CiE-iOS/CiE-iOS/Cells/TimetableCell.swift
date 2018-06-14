@@ -10,20 +10,31 @@ import UIKit
 
 class TimetableCell: UITableViewCell {
     
-    @IBOutlet weak var courseLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var fakultyLabel: UILabel!
     @IBOutlet weak var roomLabel: UILabel!
-    @IBOutlet weak var campusLabel: UILabel!
+    @IBOutlet weak var profLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var timeFrameLabel: UILabel!
+    
+    private var containedTimeTable: Timetable?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
+    @discardableResult
+    func map(to timetable: Timetable) -> TimetableCell {
+        containedTimeTable = timetable
+        guard let courseAppointment = containedTimeTable else { return self }
+        titleLabel.text = courseAppointment.course
+        roomLabel.text = "R.021"
+        fakultyLabel.text = "FK07"
+        profLabel.text = "Prof. Socher"
+        timeFrameLabel.text = courseAppointment.time
+        return self
+    }
 }
