@@ -42,6 +42,9 @@
 		61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4672120BCA59300AE35BA /* LectureDetailViewModel.swift */; };
 		61E5244F20BF12F400BBA33D /* LectureDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */; };
 		61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */; };
+		B5AF399C20D284F100127FCA /* TimetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF399B20D284F100127FCA /* TimetableCell.swift */; };
+		B5AF39A020D2911B00127FCA /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF399F20D2911B00127FCA /* Timetable.swift */; };
+		B5AF39A220D29A2900127FCA /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF39A120D29A2900127FCA /* Today.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +106,9 @@
 		61C4672120BCA59300AE35BA /* LectureDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewModel.swift; sourceTree = "<group>"; };
 		61E5244E20BF12F400BBA33D /* LectureDetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPageViewController.swift; sourceTree = "<group>"; };
 		61E5249020BF49FB00BBA33D /* LectureDetailPage03Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage03Controller.swift; sourceTree = "<group>"; };
+		B5AF399B20D284F100127FCA /* TimetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCell.swift; sourceTree = "<group>"; };
+		B5AF399F20D2911B00127FCA /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		B5AF39A120D29A2900127FCA /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 		610F08DB20D1167100754D98 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B5AF399B20D284F100127FCA /* TimetableCell.swift */,
 				610F08D920D0036D00754D98 /* LectureTableViewCell.swift */,
 				610F08DC20D1168E00754D98 /* FavouriteLectureCell.swift */,
 			);
@@ -211,9 +218,11 @@
 				61E43A4220BF4FBF004E8F27 /* LectureDetails */,
 				61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */,
 				61574B2E20A740630067DB14 /* MapViewController.swift */,
+				B5AF399F20D2911B00127FCA /* Timetable.swift */,
 				61574B3020A740E60067DB14 /* TimeTableViewController.swift */,
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
 				61574B3420A741B20067DB14 /* SettingsViewController.swift */,
+				B5AF39A120D29A2900127FCA /* Today.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -423,6 +432,7 @@
 				61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */,
 				61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */,
 				61574B3520A741B20067DB14 /* SettingsViewController.swift in Sources */,
+				B5AF39A220D29A2900127FCA /* Today.swift in Sources */,
 				61574BB220A7474A0067DB14 /* CoursesViewModel.swift in Sources */,
 				6121A4BB20B84DE8006D7660 /* Services.swift in Sources */,
 				61E5244F20BF12F400BBA33D /* LectureDetailPageViewController.swift in Sources */,
@@ -433,6 +443,7 @@
 				6121A4BD20B85A12006D7660 /* Professor.swift in Sources */,
 				6163861920CD9B3700FF3694 /* SimpleObjects.swift in Sources */,
 				61574B3320A7415D0067DB14 /* FavoritesViewController.swift in Sources */,
+				B5AF399C20D284F100127FCA /* TimetableCell.swift in Sources */,
 				61574B3120A740E60067DB14 /* TimeTableViewController.swift in Sources */,
 				610F08DD20D1168E00754D98 /* FavouriteLectureCell.swift in Sources */,
 				61C4672220BCA59300AE35BA /* LectureDetailViewModel.swift in Sources */,
@@ -440,6 +451,7 @@
 				610F08DA20D0036D00754D98 /* LectureTableViewCell.swift in Sources */,
 				61574BBA20A749410067DB14 /* SettingsViewModel.swift in Sources */,
 				61E5249120BF49FB00BBA33D /* LectureDetailPage03Controller.swift in Sources */,
+				B5AF39A020D2911B00127FCA /* Timetable.swift in Sources */,
 				6121A4B920B84587006D7660 /* Lecture.swift in Sources */,
 				61574BB420A748620067DB14 /* MapViewModel.swift in Sources */,
 				61574BB620A748990067DB14 /* TimeTableViewModel.swift in Sources */,
@@ -616,6 +628,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (

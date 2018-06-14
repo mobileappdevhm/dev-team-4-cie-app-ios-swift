@@ -615,7 +615,7 @@
         <!--Timetable-->
         <scene sceneID="T6Y-9W-eMa">
             <objects>
-                <viewController id="5yk-PN-WVX" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5yk-PN-WVX" customClass="TimeTableViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mUU-i5-V3H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -629,37 +629,80 @@
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OqG-gk-YMo">
                                 <rect key="frame" x="0.0" y="79" width="375" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkv-UF-cF9">
-                                        <rect key="frame" x="0.0" y="12.333333333333327" width="46" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkv-UF-cF9">
+                                        <rect key="frame" x="0.0" y="12.333333333333327" width="22.333333333333332" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose a date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ebm-YJ-A4w">
-                                        <rect key="frame" x="46" y="0.0" width="283" height="45"/>
+                                        <rect key="frame" x="22.333333333333343" y="0.0" width="330.33333333333326" height="45"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="space" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2K-pw-B3T">
-                                        <rect key="frame" x="329" y="12.333333333333327" width="46" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="     " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2K-pw-B3T">
+                                        <rect key="frame" x="352.66666666666669" y="12.333333333333327" width="22.333333333333314" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0E4-3o-8F2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0E4-3o-8F2">
                                 <rect key="frame" x="0.0" y="124" width="375" height="605"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="oBu-xo-oyA">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimetableCell" id="oBu-xo-oyA" customClass="TimetableCell" customModule="CiE_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oBu-xo-oyA" id="MDm-rb-vY6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="het-2m-v4a">
+                                                    <rect key="frame" x="20" y="11" width="78" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <stackView opaque="NO" contentMode="redraw" distribution="equalCentering" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Enl-ai-o7n">
+                                                    <rect key="frame" x="20" y="56" width="232" height="24"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTM-Fp-Kug">
+                                                            <rect key="frame" x="0.0" y="0.0" width="43" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Room" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0S-vn-Jv8">
+                                                            <rect key="frame" x="83" y="0.0" width="51" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eA-YO-lBg">
+                                                            <rect key="frame" x="159" y="0.0" width="73" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="het-2m-v4a" firstAttribute="top" secondItem="MDm-rb-vY6" secondAttribute="topMargin" id="JaP-hu-doC"/>
+                                                <constraint firstItem="het-2m-v4a" firstAttribute="leading" secondItem="MDm-rb-vY6" secondAttribute="leadingMargin" constant="5" id="NHD-NY-3bP"/>
+                                                <constraint firstItem="Enl-ai-o7n" firstAttribute="leading" secondItem="MDm-rb-vY6" secondAttribute="leadingMargin" constant="5" id="nck-ee-HoO"/>
+                                                <constraint firstItem="Enl-ai-o7n" firstAttribute="top" secondItem="het-2m-v4a" secondAttribute="bottom" constant="15" id="tTd-47-6Dg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="campusLabel" destination="2eA-YO-lBg" id="zcL-KM-zNH"/>
+                                            <outlet property="courseLabel" destination="het-2m-v4a" id="DVh-py-zZn"/>
+                                            <outlet property="roomLabel" destination="v0S-vn-Jv8" id="kJk-nu-UZm"/>
+                                            <outlet property="timeLabel" destination="iTM-Fp-Kug" id="gKi-ot-Fm3"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -680,10 +723,14 @@
                         <viewLayoutGuide key="safeArea" id="6hP-qj-GrE"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timetable" image="timetable" id="H7c-y3-rsv"/>
+                    <connections>
+                        <outlet property="dateField" destination="Ebm-YJ-A4w" id="Nkp-s4-iXx"/>
+                        <outlet property="timetableTableView" destination="0E4-3o-8F2" id="ElF-Zd-5lx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNQ-Io-CZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80.799999999999997" y="196.55172413793105"/>
+            <point key="canvasLocation" x="80.625" y="196.47887323943661"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="m6S-6q-X5g">
