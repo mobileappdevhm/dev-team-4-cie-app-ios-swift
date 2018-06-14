@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class MapViewController: UIViewController {
     
@@ -22,10 +23,37 @@ class MapViewController: UIViewController {
         fillMaps()
         setUpStyling()
         setUpBinding()
+        
+        //Lothstrasse
+        // create tap gesture recognizer
+        let tapGestureForLoth = UITapGestureRecognizer(target: self, action: #selector(MapViewController.imageTapped1(gesture:)))
+        // add it to the image view;
+        lothstr.addGestureRecognizer(tapGestureForLoth)
+        // make sure imageView can be interacted with by user
+        lothstr.isUserInteractionEnabled = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func imageTapped1(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            let latitude: CLLocationDegrees = 48.154873
+            let longitude: CLLocationDegrees = 11.556105
+         
+            let regionDistance: CLLocationDistance = 1000
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+            
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+            
+            let placemark = MKPlacemark(coordinate: coordinates)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = "University Applied Sciences Munich - Lothstrasse"
+            mapItem.openInMaps(launchOptions: options)
+        }
     }
     
     private func setUpStyling() {
