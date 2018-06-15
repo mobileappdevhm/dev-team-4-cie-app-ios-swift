@@ -23,8 +23,7 @@ class MapViewController: UIViewController {
         fillMaps()
         setUpStyling()
         setUpBinding()
-        
-        // create tap gesture recognizer
+                // create tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MapViewController.imageTapped(gesture:)))
         // add it to the image view;
         lothstr.addGestureRecognizer(tapGesture)
@@ -47,13 +46,13 @@ class MapViewController: UIViewController {
             let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
 
             let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
-
             let placemark = MKPlacemark(coordinate: coordinates)
             let mapItem = MKMapItem(placemark: placemark)
             mapItem.name = "University Applied Sciences Munich - Lothstrasse"
             mapItem.openInMaps(launchOptions: options)
         }
     }
+
     private func setUpStyling() {
         for image in maps {
             dropShadow(on: image)
