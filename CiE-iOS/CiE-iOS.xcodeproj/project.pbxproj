@@ -45,6 +45,7 @@
 		B5AF399C20D284F100127FCA /* TimetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF399B20D284F100127FCA /* TimetableCell.swift */; };
 		B5AF39A020D2911B00127FCA /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF399F20D2911B00127FCA /* Timetable.swift */; };
 		B5AF39A420D2C4C500127FCA /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF39A320D2C4C500127FCA /* SearchBarViewController.swift */; };
+		B5AF39A620D4203800127FCA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5AF39A520D4203800127FCA /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		B5AF399B20D284F100127FCA /* TimetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCell.swift; sourceTree = "<group>"; };
 		B5AF399F20D2911B00127FCA /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 		B5AF39A320D2C4C500127FCA /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		B5AF39A520D4203800127FCA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 				61E43A4220BF4FBF004E8F27 /* LectureDetails */,
 				61574B2C20A73F9C0067DB14 /* CoursesViewController.swift */,
 				61574B2E20A740630067DB14 /* MapViewController.swift */,
+				B5AF39A520D4203800127FCA /* LoginViewController.swift */,
 				B5AF399F20D2911B00127FCA /* Timetable.swift */,
 				61574B3020A740E60067DB14 /* TimeTableViewController.swift */,
 				61574B3220A7415D0067DB14 /* FavoritesViewController.swift */,
@@ -429,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5AF39A620D4203800127FCA /* LoginViewController.swift in Sources */,
 				61574BB820A748F10067DB14 /* FavoritesViewModel.swift in Sources */,
 				61574AFE20A739000067DB14 /* AppDelegate.swift in Sources */,
 				B5AF39A420D2C4C500127FCA /* SearchBarViewController.swift in Sources */,
@@ -628,7 +632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KTDC657RTY;
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -649,7 +653,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = KTDC657RTY;
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
