@@ -28,6 +28,9 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var mainScrollView: UIScrollView!
     
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+    }
+    
     @IBOutlet weak var logoutButton: UIButton!
     
     private var model: SettingsViewModel?

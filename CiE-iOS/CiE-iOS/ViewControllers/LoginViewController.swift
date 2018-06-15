@@ -8,26 +8,43 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
 //    @IBOutlet weak var logoutButton: UIButton!
 
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var gifImage: UIImageView!
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
        self.performSegue(withIdentifier: "Login To Course View", sender: self)
     }
-    
-    
-//    private func setupstyling(){
-//        logoutButton.setTitle("Log in", for: .normal)
-//    }
+
+    private func setupstyling(){
+        loginButton.setTitle("Log in", for: .normal)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        setupstyling()
+        setupstyling()
+        usernameField.delegate = self
+        passwordField.delegate = self
+        gifImage.loadGif(name: "LoginRedCube")
     }
- 
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameField {
+            passwordField.becomeFirstResponder()
+        } else if textField == passwordField {
+            passwordField.resignFirstResponder()
+        }
+        return true
+    }
 }
 
