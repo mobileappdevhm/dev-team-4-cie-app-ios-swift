@@ -97,11 +97,4 @@ class LectureDetailPage03Controller: UIViewController{
     private func openEmail(withTarget email: String, adressing name: String) {
         showEmailAlert(wantsToSendTo: email, named: name)
     }
-    
-    private func style(button btn: UIButton) {
-        btn.backgroundColor = UIColor.white.withAlphaComponent(1)
-        btn.layer.cornerRadius = 5
-        btn.layer.borderWidth = 1
-        btn.layer.borderColor = UIColor.black.cgColor
-    }
 }

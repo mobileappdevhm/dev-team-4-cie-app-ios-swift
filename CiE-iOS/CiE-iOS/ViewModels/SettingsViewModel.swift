@@ -7,9 +7,13 @@
 //
 
 protocol SettingsViewModelProtocol {
-    
+    init(withUser: User)
 }
 
 class SettingsViewModel: SettingsViewModelProtocol {
+    public private(set) var user: User
     
+    required init(withUser user: User) {
+        self.user = user
+    }
 }
