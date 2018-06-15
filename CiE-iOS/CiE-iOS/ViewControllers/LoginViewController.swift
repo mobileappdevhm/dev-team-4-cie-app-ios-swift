@@ -10,9 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-
-//    @IBOutlet weak var logoutButton: UIButton!
-
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -39,11 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == usernameField {
-            passwordField.becomeFirstResponder()
-        } else if textField == passwordField {
-            passwordField.resignFirstResponder()
-        }
+        _ = (textField == usernameField) ? passwordField.becomeFirstResponder() : passwordField.resignFirstResponder()
         return true
     }
 }
