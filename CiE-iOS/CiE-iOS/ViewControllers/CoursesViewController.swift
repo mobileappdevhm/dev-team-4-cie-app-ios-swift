@@ -12,6 +12,12 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var lectures: [Lecture]?
     var filteredlectures = [Lecture]()
+    private var isFiltering:Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    private var searchBarIsEmpty:Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -65,7 +71,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lectures?.count ?? 0
+        return isFiltering ? filteredlectures.count : lectures?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,21 +93,37 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                         withDescription: nil,
                                         heldBy: Professor(withName: "Dummy Prof")))
         }
-        return cell.map(to: lectures[indexPath.row])
-    }
-    
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
+        
+        cell.map(to: isFiltering ? filteredlectures[indexPath.row] : lectures[indexPath.row])
+        return cell
+        
     }
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredlectures = lectures!.filter({(lecture:LectureTableViewCell) -> Bool in
-        return lecture.titleLabel.lowercased().contains(searchText.lowercased())
+        let contains: (String) -> Bool = { subject in
+            return subject.lowercased().contains(searchText.lowercased())
+        }
+        filteredlectures = lectures!.filter({(lecture:Lecture) -> Bool in
+            let titleMatch = contains(lecture.title)
+            var departmentMatch: Bool = false
+            for department in lecture.connectedDepartments {
+                if contains(department.getString()) {
+                    departmentMatch = true
+                    break
+                }
+            }
+            let professorMatch = contains(lecture.professor.name)
+            var roomMatch: Bool = false
+            for lectureDate in lecture.lectureDates {
+                if contains(lectureDate.room.getNameRepresentation()) {
+                    roomMatch = true
+                    break
+                }
+            }
+            return titleMatch || professorMatch || departmentMatch || roomMatch
         })
         tableView.reloadData()
     }
-    
 }
 
 extension CoursesViewController: UISearchResultsUpdating {
