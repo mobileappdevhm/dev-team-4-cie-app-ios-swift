@@ -11,6 +11,9 @@ import Foundation
 @testable import CiE_iOS
 
 class LectureMock: LectureProtocol {
+    
+    var duration: Double? { return injectedDuration }
+    
     var description: String { return injectedDescription }
     
     var id: UUID { return injectedUUID }
@@ -39,6 +42,6 @@ class LectureMock: LectureProtocol {
     func setToCiE() {}
     func isConnedtedTo(departments: [Department]?) {}
     func add(dates: [LectureDate]?) { }
-    func add(date: LectureDate?) {}
+    func add(date: LectureDate?) { }
     
 }
