@@ -518,10 +518,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Course List" id="7s0-KH-Ala"/>
                     <connections>
+                        <outlet property="searchDisplayController" destination="mZ2-cg-u2Y" id="Fyk-Xk-kfl"/>
                         <outlet property="tableView" destination="ayv-RN-7fj" id="Bt1-Gu-vfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="mZ2-cg-u2Y">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="b6c-W2-mnc"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="p7b-UP-9iT"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="Ekq-tz-fA8"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="gTk-bK-PPR"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-1538.4000000000001" y="897.30134932533736"/>
         </scene>

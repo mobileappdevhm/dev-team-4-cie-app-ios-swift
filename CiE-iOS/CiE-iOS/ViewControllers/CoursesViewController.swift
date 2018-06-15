@@ -10,15 +10,33 @@ import UIKit
 
 class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var lectures: [Lecture]?
+    var lectures: [Lecture]?
+    var filteredlectures = [Lecture]()
+    private var isFiltering:Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    private var searchBarIsEmpty:Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
     @IBOutlet weak var tableView: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = UISearchController(searchResultsController: nil)
+       
         updateLectureCatalog()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        // Setup the Search Controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Courses"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,6 +44,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
         updateLectureCatalog()
         tableView.reloadData()
     }
+    
     
     private func updateLectureCatalog() {
         guard lectures == nil else { return }
@@ -52,7 +71,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lectures?.count ?? 0
+        return isFiltering ? filteredlectures.count : lectures?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -74,8 +93,42 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                         withDescription: nil,
                                         heldBy: Professor(withName: "Dummy Prof")))
         }
-        return cell.map(to: lectures[indexPath.row])
+        
+        cell.map(to: isFiltering ? filteredlectures[indexPath.row] : lectures[indexPath.row])
+        return cell
+        
     }
     
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        let contains: (String) -> Bool = { subject in
+            return subject.lowercased().contains(searchText.lowercased())
+        }
+        filteredlectures = lectures!.filter({(lecture:Lecture) -> Bool in
+            let titleMatch = contains(lecture.title)
+            var departmentMatch: Bool = false
+            for department in lecture.connectedDepartments {
+                if contains(department.getString()) {
+                    departmentMatch = true
+                    break
+                }
+            }
+            let professorMatch = contains(lecture.professor.name)
+            var roomMatch: Bool = false
+            for lectureDate in lecture.lectureDates {
+                if contains(lectureDate.room.getNameRepresentation()) {
+                    roomMatch = true
+                    break
+                }
+            }
+            return titleMatch || professorMatch || departmentMatch || roomMatch
+        })
+        tableView.reloadData()
+    }
 }
 
+extension CoursesViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
+}
