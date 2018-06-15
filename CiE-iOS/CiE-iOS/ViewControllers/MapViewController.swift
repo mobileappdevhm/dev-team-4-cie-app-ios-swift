@@ -18,34 +18,42 @@ class MapViewController: UIViewController {
     @IBOutlet weak var karlstr: UIImageView!
     @IBOutlet weak var pasing: UIImageView!
     
-    func lothClicked(_ sender: Any) {
-        let latitude: CLLocationDegrees = 48.154873
-        let longitude: CLLocationDegrees = 11.556105
-        
-        let regionDistance: CLLocationDistance = 1000
-        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
-        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
-        
-        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
-        
-        let placemark = MKPlacemark(coordinate: coordinates)
-        let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "University Applied Sciences Munich - Lothstrasse"
-        mapItem.openInMaps(launchOptions: options)
-    }
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fillMaps()
         setUpStyling()
         setUpBinding()
+        
+        // create tap gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MapViewController.imageTapped(gesture:)))
+        // add it to the image view;
+        lothstr.addGestureRecognizer(tapGesture)
+        // make sure imageView can be interacted with by user
+        lothstr.isUserInteractionEnabled = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        // if the tapped view is a UIImageView then set it to imageview
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            let latitude: CLLocationDegrees = 48.154873
+            let longitude: CLLocationDegrees = 11.556105
+
+            let regionDistance: CLLocationDistance = 1000
+            let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+
+            let placemark = MKPlacemark(coordinate: coordinates)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = "University Applied Sciences Munich - Lothstrasse"
+            mapItem.openInMaps(launchOptions: options)
+        }
+    }
     private func setUpStyling() {
         for image in maps {
             dropShadow(on: image)
