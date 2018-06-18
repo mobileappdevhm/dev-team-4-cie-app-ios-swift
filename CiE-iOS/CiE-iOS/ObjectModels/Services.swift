@@ -166,3 +166,109 @@ struct AlertService {
         return myAlertController
     }
 }
+
+//This service provides the Lecture Data from the nine API
+struct LectureCatalogService {
+    
+    //Structs with json parameters
+    struct Course: Decodable {
+        let id: String?
+        let description: String?
+        let isCoterie: Bool?
+        let hasHomeBias: Bool?
+        let correlations: [Correlations]?
+        let dates: [DateAPI]?
+        let name: String?
+        let shortName: String?
+        //let actions: []
+    }
+    
+    struct Correlations: Decodable {
+        let organiser: String?
+        let curriculum: String?
+        //let actions: []
+    }
+    
+    struct DateAPI: Decodable {
+        
+//        func asLectureDates() -> LectureDate? {
+//            guard
+//                let rooms = rooms, !rooms.isEmpty,
+//                let begin = begin,
+//                let end = end,
+//                let lecturer = lecturer, !lecturer.isEmpty
+//                else { return nil }
+//            return LectureDate(room: Room(stringRepresentation: rooms[0].number), date: Date(from: <#T##Decoder#>), durationInHours: duration)
+//        }
+        
+        let begin: String?
+        let end: String?
+        let isCanceled: Bool?
+        let rooms: [RoomAPI]?
+        let lecturer: [LecturerAPI]?
+        //let actions: []
+    }
+    
+    struct RoomAPI: Decodable {
+        let number: String?
+        let building: String?
+        let campus: String?
+        //let actions: []
+    }
+    
+    struct LecturerAPI: Decodable {
+        let lastName: String?
+        //let actions: []
+    }
+    
+    private static var codableLectures: [Course] = []
+    
+    private static func convert(_ rawLecture: Course) -> Lecture {
+        var professorName: String = "Unknown Professor"
+        if let dates = rawLecture.dates, !dates.isEmpty {
+            if let lecturers = dates[0].lecturer, !lecturers.isEmpty {
+                professorName = lecturers[0].lastName ?? professorName
+            }
+        }
+        
+        
+        let lecture = Lecture(
+            withTitle: rawLecture.name ?? "Unknown Title",
+            withDescription: rawLecture.description ?? "No Description provided.",
+            heldBy: Professor(withName: professorName)
+        )
+//        for date in rawLecture.dates ?? [] {
+//            lecture.add(dates: date.asLectureDates())
+//        }
+        return lecture
+    }
+    
+    @discardableResult
+    static func getLectures(withUpdate updateIsNeeded: Bool) -> [Lecture]? {
+        if updateIsNeeded {
+            updateLectures()
+        }
+        var lectures: [Lecture] = []
+        for rawLecture in codableLectures {
+            lectures.append(convert(rawLecture))
+        }
+        return !lectures.isEmpty ? lectures : nil
+    }
+    
+    static func updateLectures() {
+        
+        let jsonUrlString = "https://nine.wi.hm.edu/api/v2/courses/FK%2013/CIE/SoSe%2018" //Update if next semester is available!!!
+        guard let url = URL(string: jsonUrlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) {
+            (data, response, err) in
+            guard let data = data else { return }
+            do {
+                let responsedLectures = try JSONDecoder().decode([Course].self, from: data)
+                self.codableLectures.append(contentsOf: responsedLectures)
+            } catch let jsonErr {
+                print("Error serializing json:", jsonErr)
+            }
+            }.resume()
+    }
+}

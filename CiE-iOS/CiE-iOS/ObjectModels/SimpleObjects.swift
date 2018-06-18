@@ -18,26 +18,47 @@ enum Department: Int {
 
 struct Room {
     let floor: Floor
-    let number: Int
+    let onlyDisplayName: Bool
+    var number: Int? {
+        return onlyDisplayName ? nil : _internalNumber
+    }
+    let _internalNumber: Int
     let building: Building
+    public private(set) var displayName: String
     
     func getNameRepresentation() -> String {
-        return "\(building.rawValue) \(floor.rawValue).\(number)"
+        if onlyDisplayName {
+            return displayName
+        }
+        return "\(building.rawValue) \(floor.rawValue).\(_internalNumber)"
+    }
+    
+    init(stringRepresentation displayName: String) {
+        self.displayName = displayName
+        floor = .Undefined
+        building = .Undefined
+        _internalNumber = 123
+        onlyDisplayName = true
     }
     
     init(floor: Floor, number: Int, building: Building) {
+        onlyDisplayName = false
         self.floor = floor
-        self.number = number
+        self._internalNumber = number
         self.building = building
+        displayName = ""
+        displayName = getNameRepresentation()
     }
 }
 
 enum Floor: Int {
     case Basement = -1, GroundFloor, FirstFloor, SecondFloor, ThirdFloor, FourthFloor
+    case Undefined = -100
 }
 
 enum Building: String {
     case A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+    case Undefined
 }
 
 struct LectureDate: Hashable {
@@ -55,7 +76,7 @@ struct LectureDate: Hashable {
         self.room = room
         self.date = date
         self.duration = durationInHours
-        self.hashValue = room.number * room.floor.rawValue / 7
+        self.hashValue = room._internalNumber * room.floor.rawValue / 7
     }
 }
 

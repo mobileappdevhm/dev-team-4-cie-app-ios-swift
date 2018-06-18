@@ -26,6 +26,7 @@ protocol LectureProtocol {
     func isConnedtedTo(departments: [Department]?)
     func add(dates: [LectureDate]?)
     func add(date: LectureDate?)
+    //func setID(to: String)
 }
 
 class Lecture: LectureProtocol,Equatable {
@@ -81,5 +82,10 @@ class Lecture: LectureProtocol,Equatable {
         guard let date = date else { return }
         lectureDates.update(with: date)
     }
+    
+//    func setID(to id: String) {
+//        self.id = id
+//    }
+    
     
 }

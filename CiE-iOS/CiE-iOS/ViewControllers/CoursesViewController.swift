@@ -27,7 +27,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         navigationItem.searchController = UISearchController(searchResultsController: nil)
        
-        updateLectureCatalog()
+        //updateLectureCatalog()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -47,27 +47,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     private func updateLectureCatalog() {
-        guard lectures == nil else { return }
-        lectures = [
-            Lecture(withTitle: "Mobile Anwendungen",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Socher")),
-            Lecture(withTitle: "Funktionale Programmierung",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Heinz")),
-            Lecture(withTitle: "Business English",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Becker")),
-            Lecture(withTitle: "Politische Ereignisse der Vergangenheit",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Cho")),
-            Lecture(withTitle: "CiE Super Lecture",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Kubayashi")),
-            Lecture(withTitle: "German Economics 101",
-                    withDescription: nil,
-                    heldBy: Professor(withName: "Kunze"))
-        ]
+        lectures = LectureCatalogService.getLectures(withUpdate: true) //Update manuell verfügbar?
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -29,6 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameField.delegate = self
         passwordField.delegate = self
         gifImage.loadGif(name: "LoginRedCube")
+        LectureCatalogService.getLectures(withUpdate: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
