@@ -95,6 +95,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell.map(to: favourites[indexPath.row])
     }
     
+    private func toggleWarning() {
+        if let conflict = model?.conflictForAlert {
+            warningLabel.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+            warningLabel.text = conflict.alertDescription()
+        }
+        warningLabel.isHidden = true
+    }
+    
 
     private func setUpStyling() {
         submitButton.backgroundColor = UIColor.red.withAlphaComponent(0.8)
@@ -102,13 +110,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         submitButton.layer.borderWidth = 1
         submitButton.layer.borderColor = UIColor.lightGray.cgColor
         
-        warningLabel.backgroundColor = UIColor.red.withAlphaComponent(0.5)
-        
+        toggleWarning()
         detailsSwitch.setOn(false, animated: false)
         detailsStackView.isHidden = true
         
-        warningLabel.text = warningText
-        warningLabel.isHidden = true
         
         pinBackground(backgroundView, to: submitStackView)
         updateUserStats()
@@ -140,7 +145,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func switchChanged(sender: UISwitch!) {
         UIView.animate(withDuration: 0.2) {
             self.detailsStackView.isHidden = !sender.isOn
-            self.warningLabel.isHidden = !sender.isOn
+            self.warningLabel.isHidden = !sender.isOn && !(self.model?.hasConflicts ?? false)
             if sender.isOn { self.updateUserStats() }
         }
     }

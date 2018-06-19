@@ -15,13 +15,32 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var timetableTableView: UITableView!
     @IBOutlet weak var dayLabel: UILabel!
     
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }
+    
+    private var currentDate: Date? {
+        didSet{
+            dateField.text = dateFormatter.string(from: picker.date)
+            updateLecturesFiltered()
+            timetableTableView.reloadData()
+        }
+    }
+    
     let picker = UIDatePicker()
-    final let url = URL(string: "https://api.myjson.com/bins/m1zpy")
-    private var timetables = [Timetable]()
+    private var lectures: [Lecture]? {
+        didSet{
+            updateLecturesFiltered()
+        }
+    }
+    private var filteredLectures: [(Lecture,LectureDate)] = []
     
     //MARK - protocol functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timetables.count
+        return filteredLectures.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -29,7 +48,7 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimetableCell") as! TimetableCell
-        return cell.map(to: timetables[indexPath.row])
+        return cell.map(to: filteredLectures[indexPath.row])
     }
     
     override func viewDidLoad() {
@@ -37,13 +56,15 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         createDatePicker()
         timetableTableView.delegate = self
         timetableTableView.dataSource = self
-        downloadJSON()
+        lectures = FavouriteService.currentFavourites()
+        picker.date = NSDate() as Date
         dayLabel.text = "Timetable"
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        lectures = FavouriteService.currentFavourites()
+        timetableTableView.reloadData()
     }
     
     //date selection feature
@@ -65,44 +86,27 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func donePressed(){
-        //format date
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .none
-        
-        let dateString = formatter.string(from: picker.date)
-        
-        dateField.text = "\(dateString)"
-        isWeekday(today: dateString)
+        currentDate = picker.date
         self.view.endEditing(true)
     }
     
+    private func updateLecturesFiltered() {
+        var filteredAppointments: [(Lecture,LectureDate)] = []
+        _ = lectures?.filter({ (lecture) -> Bool in
+            lecture.lectureDates.contains(where: { (date) -> Bool in
+                let components = Calendar.current.dateComponents([.day], from: date.date, to: self.picker.date)
+                let sameDay = components.day ?? 1 == 0
+                if sameDay { filteredAppointments.append((lecture,date)) }
+                return sameDay
+            })
+        })
+        filteredLectures = filteredAppointments
+    }
     //check date entered
     func isWeekday(today: String){
         if today.range(of: "Monday") != nil {
             print("exist!")
         }
     }
-
-    //download data from json
-    func downloadJSON(){
-        guard let downloadURL = url else { return }
-        URLSession.shared.dataTask(with: downloadURL) { data, URLResponse, error in
-            guard let data = data, error == nil, URLResponse != nil else
-            {
-                return
-            }
-            do{
-                let decoder = JSONDecoder()
-                let downloadtimetables = try decoder.decode(Timetables.self, from: data)
-                self.timetables = downloadtimetables.timetables
-                DispatchQueue.main.async {
-                    self.timetableTableView.reloadData()
-                }
-            } catch {
-                print("something wrong after downloaded")
-            }
-            }.resume()
-}
 
 }

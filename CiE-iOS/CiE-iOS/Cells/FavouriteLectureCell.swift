@@ -19,13 +19,11 @@ class FavouriteLectureCell: UITableViewCell {
     @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
     private var containedLecture: Lecture?
-    private var lectureIsAvailable: Bool {
-        return containedLecture?.isSetUp ?? false
+    private var lectureAvailableState: LectureAvailability {
+        return containedLecture?.available ?? .unavailable
     }
     private var availableImage: UIImage? {
-        return UIImage(
-                    named: (lectureIsAvailable ? "courses_green" : "courses_yellow")
-                )?.withRenderingMode(.alwaysTemplate)
+        return lectureAvailableState.getImage()
     }
     
     override func awakeFromNib() {
@@ -36,8 +34,7 @@ class FavouriteLectureCell: UITableViewCell {
     private func reloadStatusImage() {
         availableImg.image = availableImage
         availableImg.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        let color = lectureIsAvailable ? UIColor.green : UIColor.orange
-        availableImg.tintColor = color.withAlphaComponent(0.7)
+        availableImg.tintColor = lectureAvailableState.getColor()
     }
     
     private func setUpImageViews() {
@@ -57,9 +54,9 @@ class FavouriteLectureCell: UITableViewCell {
         guard let lecture = containedLecture else { return self }
         reloadStatusImage()
         titleLabel.text = lecture.title
-        profLabel.text = lecture.professor.title ?? "Prof. test"
-        roomLabel.text = lecture.lectureDates.first?.room.getNameRepresentation() ?? "R 2.010"
-        fakultyLabel.text = lecture.connectedDepartments.isEmpty ? "FK01" : lecture.connectedDepartments[0].getString()
+        profLabel.text = lecture.professor.name
+        roomLabel.text = lecture.lectureDates.first?.room.getNameRepresentation() ?? "Unknown"
+        fakultyLabel.text = lecture.connectedDepartments.isEmpty ? Department.Undefined.getString() : lecture.connectedDepartments[0].getString()
         setUpImageViews()
         return self
     }

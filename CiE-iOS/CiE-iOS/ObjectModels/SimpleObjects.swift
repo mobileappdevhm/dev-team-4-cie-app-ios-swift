@@ -7,11 +7,39 @@
 //
 
 import Foundation
+import UIKit
 
+enum LectureAvailability {
+    func getImage() -> UIImage? {
+        switch self {
+        case .available:
+            return UIImage(named: "courses_green")?.withRenderingMode(.alwaysTemplate)
+        case .endangerd:
+            return UIImage(named: "courses_yellow")?.withRenderingMode(.alwaysTemplate)
+        case .unavailable:
+            return UIImage(named: "courses_red")?.withRenderingMode(.alwaysTemplate)
+        }
+    }
+    func getColor() -> UIColor {
+        switch self {
+        case .available:
+            return UIColor.green.withAlphaComponent(0.7)
+        case .endangerd:
+            return UIColor.orange.withAlphaComponent(0.7)
+        case .unavailable:
+            return UIColor.red.withAlphaComponent(0.7)
+        }
+    }
+    case available
+    case endangerd
+    case unavailable
+}
 enum Department: Int {
     case FK01 = 1, FK02, FK03, FK04, FK05, FK06, FK07, FK08, FK09, FK10, FK11, FK12, FK13
+    case Undefined = -1
     
     func getString() -> String {
+        guard rawValue != -1 else { return "Undefined" }
         return self.rawValue < 10 ? "FK0\(self.rawValue)" : "FK\(self.rawValue)"
     }
 }
@@ -77,6 +105,16 @@ struct LectureDate: Hashable {
         self.date = date
         self.duration = durationInHours
         self.hashValue = room._internalNumber * room.floor.rawValue / 7
+    }
+    
+    func getTimeBoxString() -> String? {
+        let components = Calendar.current.dateComponents([.hour, .minute], from: self.date)
+        guard let hour = components.hour, let minute = components.minute else { return nil }
+        let durationHours = Int(self.duration)
+        var durationMinutes = Int(self.duration*60 - Double(durationHours)*60)
+        let overflowHour = Int((durationMinutes + minute)/60)
+        durationMinutes = durationMinutes - (60 * overflowHour)
+        return "\(hour):\(minute) - \(hour + durationHours + overflowHour):\(minute + durationMinutes)"
     }
 }
 
