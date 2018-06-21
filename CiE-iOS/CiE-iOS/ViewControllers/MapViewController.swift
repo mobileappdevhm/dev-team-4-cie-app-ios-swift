@@ -66,11 +66,9 @@ class MapViewController: UIViewController {
         lastTappedImage = imageTapped
         print("Tapped on \(imageTapped).")
         
-        
-        
         let goToMap: (UIAlertAction) -> Void = {
             alert in
-          
+        
             if(self.lastTappedImage?.image == self.lothstr.image){
                 let latitude: CLLocationDegrees = 48.154873
                 let longitude: CLLocationDegrees = 11.556105
@@ -122,7 +120,7 @@ class MapViewController: UIViewController {
         let fullscreen: (UIAlertAction) -> Void = {
             alert in
             
-            let im = tapGestureRecognizer.view as! UIImageView
+            //let im = tapGestureRecognizer.view as! UIImageView
             let newImageView = UIImageView(image: self.lastTappedImage?.image)
             newImageView.frame = UIScreen.main.bounds
             newImageView.backgroundColor = .black
@@ -146,7 +144,7 @@ class MapViewController: UIViewController {
         
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
         
-        var height:NSLayoutConstraint = NSLayoutConstraint(item: alertController.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: self.view.frame.height * 0.50)
+        let height:NSLayoutConstraint = NSLayoutConstraint(item: alertController.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: self.view.frame.height * 0.50)
         alertController.view.addConstraint(height);
 
         
