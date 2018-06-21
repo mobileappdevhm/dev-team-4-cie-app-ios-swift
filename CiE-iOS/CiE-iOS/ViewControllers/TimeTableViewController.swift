@@ -11,7 +11,7 @@ import Foundation
 
 class TimeTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var dateField: UITextField!
+    @IBOutlet weak var dateField: UIButton!
     @IBOutlet weak var timetableTableView: UITableView!
     @IBOutlet weak var dayLabel: UILabel!
     
@@ -24,7 +24,7 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private var currentDate: Date? {
         didSet{
-            dateField.text = dateFormatter.string(from: picker.date)
+            dateField.setTitle(dateFormatter.string(from: picker.date), for: .normal)
             updateLecturesFiltered()
             timetableTableView.reloadData()
         }
@@ -53,12 +53,9 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDatePicker()
-        timetableTableView.delegate = self
-        timetableTableView.dataSource = self
-        lectures = FavouriteService.currentFavourites()
-        picker.date = NSDate() as Date
-        dayLabel.text = "Timetable"
+        setUpStyling()
+        setUpBinding()
+        currentDate = Date()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,40 +64,63 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
         timetableTableView.reloadData()
     }
     
+    private func setUpStyling() {
+        dayLabel.text = "Timetable"
+        timetableTableView.allowsSelection = false
+    }
     //date selection feature
-    func createDatePicker(){
-        
-        //toolbar
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        //done button for toolbar
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([done], animated: false)
-        
-        dateField.inputAccessoryView = toolbar
-        dateField.inputView = picker
-        
-        //format picker for date
-        picker.datePickerMode = .date
+    private func setUpBinding() {
+        timetableTableView.delegate = self
+        timetableTableView.dataSource = self
+        dateField.addTarget(self, action: #selector(showDatePicker), for: .touchUpInside)
+        lectures = FavouriteService.currentFavourites()
     }
     
-    @objc func donePressed(){
-        currentDate = picker.date
-        self.view.endEditing(true)
+    @objc
+    func showDatePicker() {
+        let setDate: (UIAlertAction) -> Void = {
+            alert in
+                self.currentDate = self.picker.date
+        }
+        // setting properties of the datePicker
+        picker.datePickerMode = .date
+        picker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+        alertController.view.addSubview(picker)
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: setDate)
+        okAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion:{})
     }
     
     private func updateLecturesFiltered() {
-        var filteredAppointments: [(Lecture,LectureDate)] = []
+        var orderedFilteredAppointments: [(Lecture,LectureDate)] = []
+        var filteredDictionary: Dictionary<Date,(Lecture,LectureDate)> = [:]
         _ = lectures?.filter({ (lecture) -> Bool in
             lecture.lectureDates.contains(where: { (date) -> Bool in
                 let components = Calendar.current.dateComponents([.day], from: date.date, to: self.picker.date)
                 let sameDay = components.day ?? 1 == 0
-                if sameDay { filteredAppointments.append((lecture,date)) }
+                if sameDay { filteredDictionary[date.date] = (lecture,date) }
                 return sameDay
             })
         })
-        filteredLectures = filteredAppointments
+        let orderedKeys = filteredDictionary.keys.sorted(by: { (first, second) -> Bool in
+            let get: (Calendar.Component, Date) -> Int = { targetField,date in
+                return Calendar.current.component(targetField, from: date)
+            }
+            switch (get(.hour, first),get(.hour, second)) {
+            case (let x,let y) where x == y :
+                return get(.minute, first) < get(.minute, second)
+            case (let x,let y):
+                return x < y
+            }
+        })
+        for key in orderedKeys {
+            if let appointment = filteredDictionary[key] {
+                orderedFilteredAppointments.append(appointment)
+            }
+        }
+        filteredLectures = orderedFilteredAppointments
     }
     //check date entered
     func isWeekday(today: String){
