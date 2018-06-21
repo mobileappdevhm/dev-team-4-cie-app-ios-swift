@@ -110,11 +110,10 @@ struct LectureDate: Hashable {
     func getTimeBoxString() -> String? {
         let components = Calendar.current.dateComponents([.hour, .minute], from: self.date)
         guard let hour = components.hour, let minute = components.minute else { return nil }
-        let durationHours = Int(self.duration)
-        var durationMinutes = Int(self.duration*60 - Double(durationHours)*60)
-        let overflowHour = Int((durationMinutes + minute)/60)
-        durationMinutes = durationMinutes - (60 * overflowHour)
-        return "\(hour):\(minute) - \(hour + durationHours + overflowHour):\(minute + durationMinutes)"
+        let durationMinutes = hour*60 + minute + Int(self.duration * 60)
+        let hoursEnd = durationMinutes/60 <= 9 ? "0\(durationMinutes/60)" : "\(durationMinutes/60)"
+        let minutesEnd = durationMinutes % 60 <= 9 ? "0\(durationMinutes%60)" : "\(durationMinutes%60)"
+        return "\(hour <= 9 ? "0\(hour)" : "\(hour)"):\(minute <= 9 ? "0\(minute)" : "\(minute)") - \(hoursEnd):\(minutesEnd)"
     }
 }
 
