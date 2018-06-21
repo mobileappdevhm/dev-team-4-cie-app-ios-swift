@@ -36,7 +36,25 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
             updateLecturesFiltered()
         }
     }
-    private var filteredLectures: [(Lecture,LectureDate)] = []
+    private var filteredLectures: [(Lecture,LectureDate)] = []{
+        didSet{
+            //filteredLectures
+            // wann immer filtered lectures gesetzt wurde
+            //checkForConflicts()
+            // TODO Schleife drum rum
+            //String der Anfangszeit und Endzeit enhält
+            String? stringFromCurrLecture = self.filteredLectures.1.getTimeBoxString()
+            
+            let dateformatter = DateFormatter()
+            dateformatter.dateFormat = "HH:MM - HH:MM"
+            
+            var start = dateformatter.date(from: stringFromCurrLecture)
+            var end = dateformatter.date(from: stringFromCurrLecture)
+            
+        }
+    }
+    
+    
     
     //MARK - protocol functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
