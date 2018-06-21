@@ -792,7 +792,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b8l-1G-NoA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="347"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
@@ -889,14 +889,14 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YVM-ez-VXF">
-                                        <rect key="frame" x="0.0" y="357" width="414" height="1"/>
+                                        <rect key="frame" x="0.0" y="307" width="414" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="ycb-0i-qTO"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hOx-gg-bLf">
-                                        <rect key="frame" x="0.0" y="368" width="414" height="31"/>
+                                        <rect key="frame" x="0.0" y="318" width="414" height="31"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idA-EN-4X9">
                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="31"/>
@@ -918,7 +918,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0eB-qV-t2d">
-                                        <rect key="frame" x="0.0" y="409" width="414" height="63"/>
+                                        <rect key="frame" x="0.0" y="359" width="414" height="113"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-yu-Joy">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -928,31 +928,31 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VG3-5t-amv">
-                                                <rect key="frame" x="0.0" y="21" width="414" height="5"/>
+                                                <rect key="frame" x="0.0" y="21" width="414" height="36"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CiE of Favourites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIL-Xd-QlB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
                                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9Gk-1w-N4o">
-                                                        <rect key="frame" x="0.0" y="5" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="34" width="414" height="2"/>
                                                         <color key="tintColor" red="1" green="0.044671976959999998" blue="0.094781849119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </progressView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wZe-sk-W7l">
-                                                <rect key="frame" x="0.0" y="46" width="414" height="17"/>
+                                                <rect key="frame" x="0.0" y="77" width="414" height="36"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current ECTS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gh2-vl-Dg6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
                                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="21"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Dw-2t-ZpA">
-                                                        <rect key="frame" x="0.0" y="15" width="414" height="2"/>
+                                                        <rect key="frame" x="0.0" y="34" width="414" height="2"/>
                                                         <color key="tintColor" red="1" green="0.044671976959999998" blue="0.094781849119999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </progressView>
                                                 </subviews>
@@ -1066,7 +1066,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hTP-10-nbg">
-                                <rect key="frame" x="50" y="80" width="314" height="433"/>
+                                <rect key="frame" x="50" y="80" width="314" height="479"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginRedCube" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J72-Mz-o3r">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="220"/>
@@ -1086,7 +1086,7 @@
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-rE-mhN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NINE email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R8Z-rE-mhN">
                                         <rect key="frame" x="0.0" y="313" width="314" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="flJ-jp-MM8"/>
@@ -1095,7 +1095,7 @@
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-KV-v19">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NINE Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kcg-KV-v19">
                                         <rect key="frame" x="0.0" y="353" width="314" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="zj2-Hd-Fjw"/>
@@ -1150,6 +1150,14 @@
                                             <constraint firstAttribute="height" constant="40" id="ZQM-7b-Fat"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-Q2-6fN">
+                                        <rect key="frame" x="0.0" y="443" width="314" height="36"/>
+                                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="17"/>
+                                        <state key="normal" title="Register at NINE"/>
+                                        <connections>
+                                            <action selector="registerButtonPressed:" destination="OnM-Hu-jJi" eventType="touchUpInside" id="8xj-sQ-EMS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
