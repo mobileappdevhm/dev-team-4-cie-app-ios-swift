@@ -14,28 +14,26 @@ class LectureDetailViewController: UIViewController{
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var infoStack: UIStackView!
-    private var detailModel: LectureDetailViewModelProtocol?
+    var detailModel: LectureDetailViewModelProtocol?
     var detailCompartments: [UIView]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailModel = LectureDetailViewModel(containing: Lecture(
-            withTitle: "Test Title",
-            withDescription: nil,
-            heldBy: Professor(withName: "Socher")))
         setUpDetails()
+        guard let detailModel = detailModel else { return }
+        (childViewControllers[0] as! LectureDetailPageViewController).model = detailModel
+    }
+    
+    func updatePageIndicator(to index: Int) {
+        pageLabel.text = "\(index + 1) of 3"
     }
     
     private func setUpDetails() {
         guard let detailModel = detailModel else { return }
         titleLabel.text = detailModel.title
-        titleLabel.leadingAnchor.constraint(equalTo: detailBodyStack.leadingAnchor).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: detailBodyStack.trailingAnchor).isActive = true
         descriptionLabel.text = detailModel.description
-        descriptionLabel.leadingAnchor.constraint(equalTo: detailBodyStack.leadingAnchor).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: detailBodyStack.trailingAnchor).isActive = true
         descriptionLabel.numberOfLines = 0
         detailCompartments = [titleLabel, descriptionLabel]
     }

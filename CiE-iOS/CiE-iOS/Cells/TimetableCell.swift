@@ -16,7 +16,8 @@ class TimetableCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeFrameLabel: UILabel!
     
-    private var containedTimeTable: Timetable?
+    private var containedLecture: Lecture?
+    private var createdForDate: LectureDate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,14 +28,17 @@ class TimetableCell: UITableViewCell {
     }
 
     @discardableResult
-    func map(to timetable: Timetable) -> TimetableCell {
-        containedTimeTable = timetable
-        guard let courseAppointment = containedTimeTable else { return self }
-        titleLabel.text = courseAppointment.course
-        roomLabel.text = "R.021"
-        fakultyLabel.text = "FK07"
-        profLabel.text = "Prof. Socher"
-        timeFrameLabel.text = courseAppointment.time
+    func map(to lectureTuple: (Lecture,LectureDate)) -> TimetableCell {
+        containedLecture = lectureTuple.0
+        createdForDate = lectureTuple.1
+        guard let lecture = containedLecture else { return self }
+        titleLabel.text = lecture.title
+        fakultyLabel.text = lecture.connectedDepartments.first?.getString() ?? "Unknown Department"
+        profLabel.text = lecture.professor.name
+        
+        guard let date = createdForDate else { return self }
+        roomLabel.text = date.room.getNameRepresentation()
+        timeFrameLabel.text = date.getTimeBoxString()
         return self
     }
 }

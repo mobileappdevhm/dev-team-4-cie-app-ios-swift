@@ -18,6 +18,9 @@ protocol LectureProtocol {
     var professor: ProfessorProtocol { get set }
     var isSetUp: Bool { get }
     var description: String { get }
+    var isCoterie:Bool? { get set }
+    var hasHomeBias:Bool? { get set }
+    var available: LectureAvailability { get }
     
     init(withTitle: String, withDescription: String?, heldBy: ProfessorProtocol)
     
@@ -26,15 +29,11 @@ protocol LectureProtocol {
     func isConnedtedTo(departments: [Department]?)
     func add(dates: [LectureDate]?)
     func add(date: LectureDate?)
+    func update(using: Lecture) -> Lecture
     //func setID(to: String)
 }
 
 class Lecture: LectureProtocol,Equatable {
-    
-    static func == (lhs: Lecture, rhs: Lecture) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
     public private(set) var id: UUID
     public private(set) var title: String
     public private(set) var connectedDepartments: [Department] = []
@@ -42,13 +41,25 @@ class Lecture: LectureProtocol,Equatable {
     public private(set) var ects: Int?
     public private(set) var isCiE: Bool?
     public private(set) var description: String
-    
+    public var isCoterie: Bool?
+    public var hasHomeBias: Bool?
     var professor: ProfessorProtocol
     var isSetUp: Bool {
         return !connectedDepartments.isEmpty
             && !lectureDates.isEmpty
             && ects != nil
             && isCiE != nil
+    }
+    var available: LectureAvailability {
+        guard let coterie = isCoterie, let homeBias = hasHomeBias else { return .unavailable }
+        switch (coterie,homeBias) {
+        case (false,false):
+            return .available
+        case (false,true), (true,false):
+            return .endangerd
+        case (true,true):
+            return .unavailable
+        }
     }
     
     required init(withTitle title: String, withDescription description: String?, heldBy professor: ProfessorProtocol) {
@@ -58,6 +69,22 @@ class Lecture: LectureProtocol,Equatable {
         self.description = description ?? "No description was provided."
     }
     
+    
+    @discardableResult
+    func update(using newVersion: Lecture) -> Lecture {
+        title = newVersion.title
+        connectedDepartments = newVersion.connectedDepartments
+        lectureDates = newVersion.lectureDates
+        ects = newVersion.ects
+        isCiE = newVersion.isCiE
+        description = newVersion.description
+        return self
+    }
+    
+    static func == (lhs: Lecture, rhs: Lecture) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     func setECTS(to ects: Int) {
         self.ects = ects
     }
@@ -82,10 +109,5 @@ class Lecture: LectureProtocol,Equatable {
         guard let date = date else { return }
         lectureDates.update(with: date)
     }
-    
-//    func setID(to id: String) {
-//        self.id = id
-//    }
-    
     
 }

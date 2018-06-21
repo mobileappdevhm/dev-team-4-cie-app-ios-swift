@@ -11,26 +11,40 @@ import UIKit
 
 class LectureDetailPage01Controller: UIViewController{
     
+    @IBOutlet weak var validCie: UILabel!
+    @IBOutlet weak var ectsScore: UILabel!
     @IBOutlet weak var available: UIImageView!
-    var availableImage: UIImage? { return UIImage(named: "courses_green")?.withRenderingMode(.alwaysTemplate)}
-    var model: LectureDetailViewModelProtocol?
+    var availabilityStatus: LectureAvailability {
+        guard let model = model else { return .unavailable }
+        return model.lecture.available
+    }
+    var availableImage: UIImage? {
+        return availabilityStatus.getImage()
+    }
+    var model: LectureDetailViewModelProtocol? {
+        didSet{
+            setUpStyling()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let prof = Professor(withName: "Socher")
-        prof.setEmail(to: "socher@hm.edu")
-        model = LectureDetailViewModel(containing:
-            Lecture(
-                withTitle: "Mobile Anwendungen",
-                withDescription: nil,
-                heldBy: prof
-        ))
         setUpStyling()
     }
     
     private func setUpStyling() {
         available.image = availableImage
         available.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        available.tintColor = UIColor.green.withAlphaComponent(0.8)
+        available.tintColor = availabilityStatus.getColor()
+        guard let model = model else { return }
+//        if let ects = model.lecture.ects {
+//            ectsScore.text = String(ects)
+//        }
+        if let lectureDate = model.lecture.lectureDates.first {
+            ectsScore.text = lectureDate.getTimeBoxString()
+        }
+        if let isCiE = model.lecture.isCiE {
+            validCie.text = isCiE ? "Yes" : "No"
+        }
     }
 }

@@ -21,19 +21,14 @@ class LectureDetailPage03Controller: UIViewController{
     }
     private let addContactImage: UIImage? = UIImage(named: "settings_email")?.withRenderingMode(.alwaysTemplate)
     private var addFavouriteDoesAdd:Bool?
-    var model: LectureDetailViewModelProtocol?
+    var model: LectureDetailViewModelProtocol? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let prof = Professor(withName: "Socher")
-        prof.setEmail(to: "socher@hm.edu")
-        model = LectureDetailViewModel(containing:
-            Lecture(
-                withTitle: "Mobile Anwendungen",
-                withDescription: nil,
-                heldBy: prof
-            ))
-        model?.lecture.setECTS(to: 2)
+        modelDependendSetUp()
+    }
+    
+    private func modelDependendSetUp() {
         addFavouriteDoesAdd = !(model?.isFavourite() ?? false)
         setUpStyling()
         setUpBinding()

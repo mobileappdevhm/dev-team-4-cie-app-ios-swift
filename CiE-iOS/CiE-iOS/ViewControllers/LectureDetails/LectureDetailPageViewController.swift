@@ -11,6 +11,13 @@ import UIKit
 class LectureDetailPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var pages = [UIViewController]()
+    var model: LectureDetailViewModelProtocol? {
+        didSet{
+            (pages[0] as! LectureDetailPage01Controller).model = model
+            (pages[1] as! LectureDetailPage02Controller).model = model
+            (pages[2] as! LectureDetailPage03Controller).model = model
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +36,22 @@ class LectureDetailPageViewController: UIPageViewController, UIPageViewControlle
         setViewControllers([page1], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
     }
     
+    private func updatePageControl(to index: Int) {
+        let lectureDetail = parent as! LectureDetailViewController
+        lectureDetail.updatePageIndicator(to: index % pages.count)
+    }
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         let currentIndex = pages.index(of: viewController)!
         let previousIndex = abs((currentIndex - 1) % pages.count)
+        updatePageControl(to: currentIndex)
         return pages[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?  {
         let currentIndex = pages.index(of: viewController)!
         let nextIndex = abs((currentIndex + 1) % pages.count)
+        updatePageControl(to: currentIndex)
         return pages[nextIndex]
     }
 

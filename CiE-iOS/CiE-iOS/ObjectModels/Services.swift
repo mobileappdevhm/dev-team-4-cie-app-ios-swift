@@ -171,35 +171,80 @@ struct AlertService {
 struct LectureCatalogService {
     
     //Structs with json parameters
-    struct Course: Decodable {
+    struct Course: Decodable, Equatable {
+        
+        static func == (lhs: LectureCatalogService.Course, rhs: LectureCatalogService.Course) -> Bool {
+            switch(lhs.id,rhs.id) {
+            case (nil,nil):
+                return true
+            case (nil,_):
+                return false
+            case (_,nil):
+                return false
+            case (_,_):
+                return lhs.id == rhs.id
+            }
+        }
+        
         let id: String?
         let description: String?
         let isCoterie: Bool?
         let hasHomeBias: Bool?
-        let correlations: [Correlations]?
+        let correlations: [CorrelationAPI]?
         let dates: [DateAPI]?
         let name: String?
         let shortName: String?
         //let actions: []
     }
     
-    struct Correlations: Decodable {
+    struct CorrelationAPI: Decodable {
         let organiser: String?
         let curriculum: String?
+        
+        func asDepartment() -> Department? {
+            guard let fk = organiser else { return .Undefined }
+            let offset = fk.index(fk.startIndex, offsetBy: 3)
+            return Department.init(rawValue: Int(String(fk[offset...])) ?? -1)
+        }
         //let actions: []
     }
     
     struct DateAPI: Decodable {
         
-//        func asLectureDates() -> LectureDate? {
-//            guard
-//                let rooms = rooms, !rooms.isEmpty,
-//                let begin = begin,
-//                let end = end,
-//                let lecturer = lecturer, !lecturer.isEmpty
-//                else { return nil }
-//            return LectureDate(room: Room(stringRepresentation: rooms[0].number), date: Date(from: <#T##Decoder#>), durationInHours: duration)
-//        }
+        func asLectureDate() -> LectureDate? {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYYMMDDZHHmmssZ"
+            guard
+                let rooms = rooms, !rooms.isEmpty, let roomNumber = rooms[0].number,
+                let begin = begin, let startDate = dateFormatter.date(
+                    from: begin.replacingOccurrences(of: "T", with: "Z")),
+                let end = end, let endDate = dateFormatter.date(
+                    from: end.replacingOccurrences(of: "T", with: "Z")),
+                let lecturer = lecturer, !lecturer.isEmpty,
+                let duration = calcDurationInHours(from: startDate, to: endDate)
+                else { return nil }
+            return LectureDate(
+                room: Room(stringRepresentation: roomNumber),
+                date: startDate,
+                durationInHours: duration
+            )
+        }
+        
+        private func calcDurationInHours(from start: Date, to end: Date) -> Double? {
+            let components = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: start, to: end)
+            guard components.year == 0, components.month == 0, components.day == 0,
+                let hours = components.hour, let minutes = components.minute else { return nil}
+            switch(hours,minutes) {
+            case (0,15), (0,30), (0,45):
+                return Double(minutes)/60
+            case (1...24,0), (1...24,15), (1...24,30), (1...24,45):
+                return (Double(minutes) + Double(hours)*60)/60
+            default:
+                return nil
+            }
+        }
         
         let begin: String?
         let end: String?
@@ -221,9 +266,11 @@ struct LectureCatalogService {
         //let actions: []
     }
     
-    private static var codableLectures: [Course] = []
+    private static var codableLectures: Dictionary<String,Course> = Dictionary()
+    private static var lectures: Dictionary<String,Lecture> = Dictionary()
     
     private static func convert(_ rawLecture: Course) -> Lecture {
+        
         var professorName: String = "Unknown Professor"
         if let dates = rawLecture.dates, !dates.isEmpty {
             if let lecturers = dates[0].lecturer, !lecturers.isEmpty {
@@ -231,15 +278,36 @@ struct LectureCatalogService {
             }
         }
         
-        
+        var description: String = "No Description provided."
+        if let rawDescription = rawLecture.description {
+            let data = rawDescription.data(using: String.Encoding.unicode)!
+            let htmlOriginDescription = try? NSAttributedString(data: data,
+                options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
+                documentAttributes: nil).string
+            description = htmlOriginDescription ?? description
+        }
         let lecture = Lecture(
             withTitle: rawLecture.name ?? "Unknown Title",
-            withDescription: rawLecture.description ?? "No Description provided.",
+            withDescription: description,
             heldBy: Professor(withName: professorName)
         )
-//        for date in rawLecture.dates ?? [] {
-//            lecture.add(dates: date.asLectureDates())
-//        }
+        
+        lecture.hasHomeBias = rawLecture.hasHomeBias
+        lecture.isCoterie = rawLecture.isCoterie
+        
+        for date in rawLecture.dates ?? [] {
+            lecture.add(date: date.asLectureDate())
+        }
+        
+        for correlation in rawLecture.correlations ?? [] {
+            if let department = correlation.asDepartment() {
+                lecture.isConnedtedTo(departments: [department])
+            }
+            if !(lecture.isCiE ?? false), correlation.curriculum?.lowercased() == "cie" {
+                lecture.setToCiE()
+            }
+        }
+        
         return lecture
     }
     
@@ -248,11 +316,14 @@ struct LectureCatalogService {
         if updateIsNeeded {
             updateLectures()
         }
-        var lectures: [Lecture] = []
-        for rawLecture in codableLectures {
-            lectures.append(convert(rawLecture))
+        for (id,rawLecture) in codableLectures {
+            if let oldLecture = lectures[id] {
+                oldLecture.update(using: convert(rawLecture))
+            } else {
+                lectures[id] = convert(rawLecture)
+            }
         }
-        return !lectures.isEmpty ? lectures : nil
+        return lectures.count != 0 ? Array(lectures.values) : nil
     }
     
     static func updateLectures() {
@@ -265,7 +336,14 @@ struct LectureCatalogService {
             guard let data = data else { return }
             do {
                 let responsedLectures = try JSONDecoder().decode([Course].self, from: data)
-                self.codableLectures.append(contentsOf: responsedLectures)
+                for course in responsedLectures {
+                    guard let id = course.id else { break }
+                    if !codableLectures.keys.contains(id) {
+                        codableLectures[id] = course
+                    } else {
+                        
+                    }
+                }
             } catch let jsonErr {
                 print("Error serializing json:", jsonErr)
             }
