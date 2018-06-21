@@ -19,6 +19,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
        self.performSegue(withIdentifier: "Login To Course View", sender: self)
     }
 
+    @IBAction func registerButtonPressed(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "https://nine.wi.hm.edu/Account/Register")! as URL, options: [ :], completionHandler: nil)
+    }
     private func setupstyling(){
         loginButton.setTitle("Log in", for: .normal)
     }
