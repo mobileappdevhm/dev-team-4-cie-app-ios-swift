@@ -329,7 +329,21 @@ struct LectureCatalogService {
     
     static func updateLectures() {
         
-        let jsonUrlString = "https://nine.wi.hm.edu/api/v2/courses/FK%2013/CIE/SoSe%2018" //Update if next semester is available!!!
+        let date = NSDate()
+        let cal = NSCalendar.current
+        let year = cal.component(.year , from: date as Date)
+        let month = cal.component(.month, from: date as Date)
+        var currentSemester: String = "SoSe"
+        if month >= 10 || month < 3  {
+            currentSemester = "WiSe"
+        } else {
+            currentSemester = "SoSe"
+        }
+        
+        let currentSemesterUrl = "\(currentSemester)%\(year)"
+        
+        let jsonUrlString = "https://nine.wi.hm.edu/api/v2/courses/FK%2013/CIE/\(currentSemesterUrl)"
+        
         guard let url = URL(string: jsonUrlString) else { return }
         
         URLSession.shared.dataTask(with: url) {
