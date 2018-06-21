@@ -44,14 +44,15 @@ struct UserStatsService {
         case CiE
         case ECTS
     }
-    
-    static var currentLectures: [Lecture] = { return lectures }()
-    static var previousLectures: [Lecture] = { return prevLectures}()
+    static func getUser() -> User? { return user }
+    static func getCurrentLectures() -> [Lecture] { return lectures }
+    static func getPreviousLectures()-> [Lecture] { return prevLectures }
     static var allLectures: [Lecture] = {
         var all = lectures
         all.append(contentsOf: prevLectures)
         return all
     }()
+    static var user: User?
     
     static func currentECTS() -> Int {
         return getAmount(of: .ECTS, forCurrent: true)

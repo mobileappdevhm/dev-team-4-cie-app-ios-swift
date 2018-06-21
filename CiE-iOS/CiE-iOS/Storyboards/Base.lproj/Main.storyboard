@@ -395,7 +395,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHH-zN-4M0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1604" y="921"/>
+            <point key="canvasLocation" x="1604" y="932"/>
         </scene>
         <!--Course List-->
         <scene sceneID="tne-QT-ifu">
@@ -665,6 +665,20 @@
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0E4-3o-8F2">
                                 <rect key="frame" x="0.0" y="132" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="63" width="414" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vqz-k4-mSz">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="47"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="25"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0E4-3o-8F2">
+                                <rect key="frame" x="0.0" y="110" width="414" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimetableCell" id="oBu-xo-oyA" customClass="TimetableCell" customModule="CiE_iOS" customModuleProvider="target">
@@ -781,7 +795,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Timetable" image="timetable" id="H7c-y3-rsv"/>
                     <connections>
-                        <outlet property="dateField" destination="Ebm-YJ-A4w" id="Nkp-s4-iXx"/>
+                        <outlet property="dateField" destination="Vqz-k4-mSz" id="Dlw-Z4-UFX"/>
                         <outlet property="dayLabel" destination="p7E-zz-t5C" id="40h-mU-1AU"/>
                         <outlet property="timetableTableView" destination="0E4-3o-8F2" id="ElF-Zd-5lx"/>
                     </connections>
@@ -1065,7 +1079,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0V-3y-UBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="921.58920539730138"/>
+            <point key="canvasLocation" x="843" y="932"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Dl5-4N-46W">

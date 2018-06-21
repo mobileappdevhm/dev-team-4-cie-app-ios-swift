@@ -33,6 +33,8 @@
 		6163861920CD9B3700FF3694 /* SimpleObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163861820CD9B3700FF3694 /* SimpleObjects.swift */; };
 		61674B0520C9A05B00B631E2 /* LectureDetailPage01Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61674B0420C9A05B00B631E2 /* LectureDetailPage01Controller.swift */; };
 		617656C320D8940F0075026A /* LectureDetailPage02Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617656C220D8940F0075026A /* LectureDetailPage02Controller.swift */; };
+		617C2AA120DC457C007C4FC7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 617C2AA020DC457C007C4FC7 /* Alamofire.framework */; };
+		617C2AA220DC457C007C4FC7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 617C2AA020DC457C007C4FC7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		61870DF320CD7A490076DF1E /* LectureDetailViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61870DF220CD7A490076DF1E /* LectureDetailViewModelMock.swift */; };
 		61870DF520CD7A6B0076DF1E /* FavoritesViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61870DF420CD7A6B0076DF1E /* FavoritesViewModelMock.swift */; };
 		618C38EA20AEF2B900B5C6FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618C38E920AEF2B900B5C6FB /* User.swift */; };
@@ -67,6 +69,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		617C2AA320DC457C007C4FC7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				617C2AA220DC457C007C4FC7 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		359FD73720BEAF0A004D95B4 /* ProfessorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorTest.swift; sourceTree = "<group>"; };
 		359FD73920BF3D4C004D95B4 /* ProfessorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorMock.swift; sourceTree = "<group>"; };
@@ -100,6 +116,7 @@
 		6163861820CD9B3700FF3694 /* SimpleObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleObjects.swift; sourceTree = "<group>"; };
 		61674B0420C9A05B00B631E2 /* LectureDetailPage01Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage01Controller.swift; sourceTree = "<group>"; };
 		617656C220D8940F0075026A /* LectureDetailPage02Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailPage02Controller.swift; sourceTree = "<group>"; };
+		617C2AA020DC457C007C4FC7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		61870DF220CD7A490076DF1E /* LectureDetailViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewModelMock.swift; sourceTree = "<group>"; };
 		61870DF420CD7A6B0076DF1E /* FavoritesViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModelMock.swift; sourceTree = "<group>"; };
 		618C38E920AEF2B900B5C6FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -122,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				617C2AA120DC457C007C4FC7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +182,7 @@
 		61574AF120A739000067DB14 = {
 			isa = PBXGroup;
 			children = (
+				617C2AA020DC457C007C4FC7 /* Alamofire.framework */,
 				61574AFC20A739000067DB14 /* CiE-iOS */,
 				61574B1120A739010067DB14 /* CiE-iOSTests */,
 				61574B1C20A739010067DB14 /* CiE-iOSUITests */,
@@ -317,6 +336,7 @@
 				61574AF620A739000067DB14 /* Sources */,
 				61574AF720A739000067DB14 /* Frameworks */,
 				61574AF820A739000067DB14 /* Resources */,
+				617C2AA320DC457C007C4FC7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -641,6 +661,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KTDC657RTY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -662,6 +686,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KTDC657RTY;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "CiE-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
