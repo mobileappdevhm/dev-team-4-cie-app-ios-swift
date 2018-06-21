@@ -65,17 +65,25 @@ class MapViewController: UIViewController {
         lastTappedImage = imageTapped
         print("Tapped on \(imageTapped).")
         
-        let im = tapGestureRecognizer.view as! UIImageView
-        let newImageView = UIImageView(image: lastTappedImage?.image)
-        newImageView.frame = UIScreen.main.bounds
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit
-        newImageView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
+        
+        
+        let showMap: (UIAlertAction) -> Void = {
+            alert in
+            //self.currentDate = self.picker.date
+        }
+        // setting properties of the datePicker
+        let weekdayLabel = UILabel()
+        weekdayLabel.frame = CGRect(x: 0, y: 15, width: 270, height: 50)
+        //picker.datePickerMode = .date
+        //picker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+        //alertController.view.addSubview(picker)
+        //let okAction = UIAlertAction(title: "Ok", style: .default, handler: setDate)
+        okAction.setValue(UIColor.red, forKey: "titleTextColor")
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion:{})
+        
+        
     }
     
     @objc
