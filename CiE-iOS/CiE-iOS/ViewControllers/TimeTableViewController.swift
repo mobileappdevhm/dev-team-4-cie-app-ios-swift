@@ -63,7 +63,7 @@ class TimeTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        lectures = FavouriteService.currentFavourites()
+        lectures = UserStatsService.getCurrentLectures()
         timetableTableView.reloadData()
     }
     

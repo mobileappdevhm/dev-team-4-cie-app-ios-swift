@@ -40,8 +40,8 @@ class FavoritesViewModel: FavoritesViewModelProtocol {
     init() {
         favourites = FavouriteService.currentFavourites()
 //        conflictForAlert = FavouriteConflict(
-//            between: Lecture(withTitle: "A", heldBy: Professor()),
-//            and: Lecture(withTitle: "B", heldBy: Professor()),
+//            between: Lecture(withTitle: "A", withDescription: nil, heldBy: Professor(withName: "A")),
+//            and: Lecture(withTitle: "B", withDescription: nil, heldBy: Professor(withName: "B")),
 //            becauseOf: .time
 //        )
     }
