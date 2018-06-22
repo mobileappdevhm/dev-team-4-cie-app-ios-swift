@@ -42,8 +42,8 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = User(withName: "Manuel Neuer", andPassword: "WM2018", usingEmail: "manuel.neuer@hm.edu")
-        model = SettingsViewModel(withUser: user)
+        let user = UserStatsService.user
+        model = SettingsViewModel(withUser: user!)
         setUpStyling()
         setUpBinding()
     }
@@ -62,23 +62,23 @@ class SettingsViewController: UIViewController {
         style(button: logoutButton)
         
         guard let user = model?.user else { return }
-        userName.text = user.name
+        userName.text = user.name ?? "Snezana"
         userEmail.text = user.email
         updateCiE()
-        cieCertificateInfo.text = "If you have all 10, you get the CiE Certificate !"
+        cieCertificateInfo.text = "If you have all 7, you get the CiE Certificate !"
         updateECTS()
     }
     
     private func updateCiE() {
         let cieScore = UserStatsService.currentCiE()
-        currentCiE.text = "You currently have \(cieScore) out of 10"
-        currentCiEProgress.progress = Float(cieScore)/10
+        currentCiE.text = "You currently have \(cieScore) out of 7"
+        currentCiEProgress.progress = Float(cieScore)/7
     }
     
     private func updateECTS() {
         let ectsScore = UserStatsService.currentECTS()
-        currentECTS.text = "You currently have \(ectsScore) out of 50"
-        currentECTSProgress.progress = Float(ectsScore)/10
+        currentECTS.text = "You currently have \(ectsScore) out of 200"
+        currentECTSProgress.progress = Float(ectsScore)/200
     }
     
     private func setUpBinding() {

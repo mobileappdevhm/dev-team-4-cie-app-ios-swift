@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 struct FavouriteService {
     static func currentFavourites() -> [Lecture] { return favourites }
@@ -40,6 +41,7 @@ struct FavouriteService {
 }
 
 struct UserStatsService {
+    static let loginURL = "https://nine.wi.hm.edu/api/v2/account/login"
     private enum UserStatType{
         case CiE
         case ECTS
@@ -53,6 +55,23 @@ struct UserStatsService {
         return all
     }()
     static var user: User?
+    private static var loginVC: LoginViewController?
+    static var loginSuccess: Bool?
+    static func loginAs(_ user: User, parent loginVC: LoginViewController) {
+        UserStatsService.user = user
+        let finishLogin:(Alamofire.DataResponse<Any>) -> Void = { (response) in
+            guard let vc = UserStatsService.loginVC else { return }
+            if let error = response.error {
+                print(error)
+                vc.loginSuccess = false
+            } else {
+                print(response)
+                vc.loginSuccess = response.description.contains("firstName")
+                }
+        }
+        UserStatsService.loginVC = loginVC
+        Alamofire.request(loginURL, method: .post, parameters: user.createLoginRequest(), encoding: JSONEncoding.default).responseJSON(completionHandler: finishLogin)
+    }
     
     static func currentECTS() -> Int {
         return getAmount(of: .ECTS, forCurrent: true)

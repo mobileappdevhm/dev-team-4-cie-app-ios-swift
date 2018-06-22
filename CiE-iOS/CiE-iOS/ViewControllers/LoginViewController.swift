@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -15,8 +16,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var gifImage: UIImageView!
     
+    var loginSuccess: Bool = false {
+        didSet{
+            self.presentLoginWasSuccess(loginSuccess)
+        }
+    }
+    
+    private func presentLoginWasSuccess(_ success: Bool) {
+        if success {
+            self.performSegue(withIdentifier: "Login To Course View", sender: self)
+        } else {
+            self.present(
+                AlertService.showInfo(titled: "Could not login!", message: "It seems as if we could not log you in."),
+                animated: true,
+                completion: nil
+            )
+        }
+    }
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
-       self.performSegue(withIdentifier: "Login To Course View", sender: self)
+        guard let password = passwordField.text, let email = usernameField.text else { return }
+        UserStatsService.loginAs(User(withName: nil, andPassword: password, usingEmail: email), parent: self)
     }
 
     @IBAction func registerButtonPressed(_ sender: Any) {
