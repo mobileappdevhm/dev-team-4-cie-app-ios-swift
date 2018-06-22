@@ -539,7 +539,7 @@
             </objects>
             <point key="canvasLocation" x="-1538.4000000000001" y="897.30134932533736"/>
         </scene>
-        <!--Map-->
+        <!--Maps-->
         <scene sceneID="84e-3x-Jgt">
             <objects>
                 <viewController id="AOZ-lx-7lT" customClass="MapViewController" customModule="CiE_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -548,10 +548,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qfn-an-aqg">
-                                <rect key="frame" x="100" y="70" width="214" height="533"/>
+                                <rect key="frame" x="100" y="114" width="214" height="547"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ztM-JC-uKY">
-                                        <rect key="frame" x="0.0" y="0.0" width="214" height="155"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="169"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lothstr" translatesAutoresizingMaskIntoConstraints="NO" id="hfy-Z2-S5f">
                                                 <rect key="frame" x="0.0" y="0.0" width="214" height="130"/>
@@ -560,10 +560,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Lothstraße" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDl-SQ-UXC">
-                                                <rect key="frame" x="0.0" y="140" width="214" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="15" id="BV8-es-B9C"/>
-                                                </constraints>
+                                                <rect key="frame" x="0.0" y="140" width="214" height="29"/>
                                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="21"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -571,7 +568,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Znm-gS-int">
-                                        <rect key="frame" x="0.0" y="175" width="214" height="169"/>
+                                        <rect key="frame" x="0.0" y="189" width="214" height="169"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="karlstr" translatesAutoresizingMaskIntoConstraints="NO" id="EDb-Aw-1PN">
                                                 <rect key="frame" x="0.0" y="0.0" width="214" height="130"/>
@@ -588,7 +585,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UV9-Fg-VoF">
-                                        <rect key="frame" x="0.0" y="364" width="214" height="169"/>
+                                        <rect key="frame" x="0.0" y="378" width="214" height="169"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="pasing" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-XU-nKX">
                                                 <rect key="frame" x="0.0" y="0.0" width="214" height="130"/>
@@ -615,7 +612,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ntc-1H-0ga"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map" id="K16-JC-f1X"/>
+                    <navigationItem key="navigationItem" title="Maps" id="h41-y9-RTN"/>
                     <connections>
                         <outlet property="karlstr" destination="EDb-Aw-1PN" id="NuB-Z0-PT3"/>
                         <outlet property="lothstr" destination="hfy-Z2-S5f" id="fCV-aL-oiD"/>
@@ -624,7 +621,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o3M-By-7rO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-666" y="197"/>
+            <point key="canvasLocation" x="-667" y="932"/>
         </scene>
         <!--Timetable-->
         <scene sceneID="T6Y-9W-eMa">
@@ -778,7 +775,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNQ-Io-CZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79.200000000000003" y="195.81280788177341"/>
+            <point key="canvasLocation" x="77" y="196"/>
         </scene>
         <!--Favourites-->
         <scene sceneID="m6S-6q-X5g">
@@ -1193,7 +1190,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="n0b-uu-mOD" kind="relationship" relationship="viewControllers" id="wWF-xi-hg9"/>
-                        <segue destination="AOZ-lx-7lT" kind="relationship" relationship="viewControllers" id="1H5-RS-Wcw"/>
+                        <segue destination="L0J-Wh-bKX" kind="relationship" relationship="viewControllers" id="1H5-RS-Wcw"/>
                         <segue destination="5yk-PN-WVX" kind="relationship" relationship="viewControllers" id="aVW-j3-MPB"/>
                         <segue destination="iy3-s7-lwR" kind="relationship" relationship="viewControllers" id="Snc-5j-RLf"/>
                         <segue destination="Fup-2W-YuT" kind="relationship" relationship="viewControllers" id="5wh-HM-ALh"/>
@@ -1239,7 +1236,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2wB-DB-3h7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="844" y="196.55172413793105"/>
+            <point key="canvasLocation" x="842" y="196"/>
         </scene>
         <!--Account-->
         <scene sceneID="vq1-6y-boQ">
@@ -1258,7 +1255,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VjV-He-nON" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.5999999999999" y="196.55172413793105"/>
+            <point key="canvasLocation" x="1603" y="196"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="Lnx-qa-8fU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L0J-Wh-bKX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="K16-JC-f1X"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bx7-Cg-5ba">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AOZ-lx-7lT" kind="relationship" relationship="rootViewController" id="LcW-8b-xZP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="krX-Ro-Syl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666.66666666666674" y="196.46739130434784"/>
         </scene>
     </scenes>
     <resources>
