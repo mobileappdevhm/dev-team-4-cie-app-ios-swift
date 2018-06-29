@@ -53,6 +53,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordField.delegate = self
         gifImage.loadGif(name: "LoginRedCube")
         LectureCatalogService.getLectures(withUpdate: true)
+        
+        //listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    //stop listening for keyboards event
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -63,5 +77,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         _ = (textField == usernameField) ? passwordField.becomeFirstResponder() : passwordField.resignFirstResponder()
         return true
     }
-}
+    
+    //move text field in response to keyboard
+    @objc func keyboardWillChange(notification: Notification){
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        if notification.name == Notification.Name.UIKeyboardWillShow ||
+            notification.name == Notification.Name.UIKeyboardWillChangeFrame {
+            if UIDevice().userInterfaceIdiom == .phone {
+                switch UIScreen.main.nativeBounds.height {
+                case 1136:
+                    //SE
+                    view.frame.origin.y = -keyboardRect.height + 70
+                case 1334:
+                    //iPhone 8
+                    view.frame.origin.y = -keyboardRect.height + 150
+                case 1920, 2208:
+                    //iPhone 8+
+                    view.frame.origin.y = -keyboardRect.height + 200
+                case 2436:
+                    //X
+                    view.frame.origin.y = -keyboardRect.height + 300
+                default:
+                    return
+                }
+            }
+        } else {
+                 view.frame.origin.y = 0
+            }
+        }
+        
+    }
+    
+    
+    
+
 
