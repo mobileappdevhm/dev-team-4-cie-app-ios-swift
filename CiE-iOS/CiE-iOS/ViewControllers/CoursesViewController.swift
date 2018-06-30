@@ -62,7 +62,7 @@ class CoursesViewController: UIViewController, UITableViewDelegate, UITableViewD
         guard let lectures = lectures else { return }
         let storyboard = UIStoryboard(name: "LectureDetail", bundle: Bundle.main)
         let detailView: LectureDetailViewController = (storyboard.instantiateViewController(withIdentifier: "detail")) as! LectureDetailViewController
-        detailView.setLecture(to: lectures[indexPath.row])
+        detailView.setLecture(to: isFiltering ? filteredlectures[indexPath.row] : lectures[indexPath.row] )
         navigationController?.show(detailView,sender: self)
     }
     
