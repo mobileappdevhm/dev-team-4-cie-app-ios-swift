@@ -359,7 +359,7 @@ struct LectureCatalogService {
             currentSemester = "SoSe"
         }
         
-        let currentSemesterUrl = "\(currentSemester)%\(year)"
+        let currentSemesterUrl = "\(currentSemester)%20\(year)"
         
         let jsonUrlString = "https://nine.wi.hm.edu/api/v2/courses/FK%2013/CIE/\(currentSemesterUrl)"
         
